@@ -1,16 +1,16 @@
 // Import document classes.
 import { UnifiedActor } from './documents/actor.mjs';
 import { UnifiedItem } from './documents/item.mjs';
-// Import sheet classes.
-import { UnifiedActorSheet } from './sheets/actor-sheet.mjs';
-import { UnifiedItemSheet } from './sheets/item-sheet.mjs';
+
+import * as sheets from "./sheets/_module.mjs";       // Import sheet classes.
+
 // Import helper/utility classes and constants.
 import { UNIFIED } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
 const collections = foundry.documents.collections;
-const sheets = foundry.appv1.sheets;
+const foundrySheets = foundry.appv1.sheets;
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -23,14 +23,11 @@ globalThis.unified = {
     UnifiedActor,
     UnifiedItem,
   },
-  applications: {
-    UnifiedActorSheet,
-    UnifiedItemSheet,
-  },
   utils: {
     rollItemMacro,
   },
   models,
+  sheets
 };
 
 Hooks.once('init', function () {
@@ -53,7 +50,7 @@ Hooks.once('init', function () {
   // for the base actor/item classes - they are included
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
-    character: models.UnifiedCharacter,
+    explorer: models.UnifiedExplorer,
     npc: models.UnifiedNPC,
   };
   CONFIG.Item.documentClass = UnifiedItem;
@@ -69,13 +66,15 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  collections.Actors.unregisterSheet('core', sheets.ActorSheet);
-  collections.Actors.registerSheet('unified', UnifiedActorSheet, {
+  collections.Actors.unregisterSheet('core', foundrySheets.ActorSheet);
+  collections.Actors.registerSheet('unified', sheets.UnifiedActorSheet, {
+    types: ["explorer"],
     makeDefault: true,
     label: 'UNIFIED.SheetLabels.Actor',
   });
-  collections.Items.unregisterSheet('core', sheets.ItemSheet);
-  collections.Items.registerSheet('unified', UnifiedItemSheet, {
+
+  collections.Items.unregisterSheet('core', foundrySheets.ItemSheet);
+  collections.Items.registerSheet('unified', sheets.UnifiedItemSheet, {
     makeDefault: true,
     label: 'UNIFIED.SheetLabels.Item',
   });

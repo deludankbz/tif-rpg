@@ -205,51 +205,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
    * @param {object} context The context object to mutate
    */
   _prepareItems(context) {
-    // Initialize containers.
-    // You can just use `this.document.itemTypes` instead
-    // if you don't need to subdivide a given type like
-    // this sheet does with spells
-    const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
-
-    // Iterate through items, allocating to containers
-    for (let i of this.document.items) {
-      // Append to gear.
-      if (i.type === 'gear') {
-        gear.push(i);
-      }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
-      }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
-      }
-    }
-
-    for (const s of Object.values(spells)) {
-      s.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    }
-
-    // Sort then assign
-    context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.spells = spells;
+   
   }
 
   /**

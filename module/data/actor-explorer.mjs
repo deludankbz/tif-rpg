@@ -1,6 +1,6 @@
 import UnifiedActorBase from './base-actor.mjs';
 
-export default class UnifiedCharacter extends UnifiedActorBase {
+export default class UnifiedExplorer extends UnifiedActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
     'UNIFIED.Actor.Character',

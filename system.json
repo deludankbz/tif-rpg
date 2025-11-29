@@ -9,6 +9,32 @@
       "url": "https://github.com/deludankbz"
     }
   ],
+  "documentTypes": {
+    "Item": {
+      "equipment": {},
+      "weapon": {}
+    },
+    "Actor": {
+      "explorer": {},
+      "npc": {},
+      "creature": {}
+    }
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "html",
+        "hbs",
+        "json"
+      ],
+      "paths": [
+        "css",
+        "lang",
+        "templates"
+      ]
+    }
+  },
   "url": "Replace this with a link to your public repository",
   "license": "LICENSE.txt",
   "readme": "README.md",

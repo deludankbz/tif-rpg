@@ -1,6 +1,6 @@
 // Export Actors
 export { default as UnifiedActorBase } from './base-actor.mjs';
-export { default as UnifiedCharacter } from './actor-character.mjs';
+export { default as UnifiedExplorer } from './actor-explorer.mjs';
 export { default as UnifiedNPC } from './actor-npc.mjs';
 
 // Export Items
