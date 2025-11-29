@@ -1,0 +1,10 @@
+packs/**/*
+css/
+**/.DS_Store
+/*.zip
+/*.js
+/*.html
+
+# Foundry
+*.lock
+foundry
