@@ -1,0 +1,11 @@
+a {
+  &.content-link,
+  &.inline-roll { 
+    --content-link-background: $c-dark-green;
+    --content-link-text-color: $c-dark-green;
+    --content-link-icon-color: $c-green;
+    --content-link-border-color: none;
+    
+    border-bottom: 1px $c-green dashed;
+ }
+}

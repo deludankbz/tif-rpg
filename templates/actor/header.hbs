@@ -1,21 +1,13 @@
 {{! Sheet Header }}
 <header class='sheet-header'>
   <div class='header-fields flexrow'>
-    <img class='profile-img'
-      src='{{actor.img}}'
-      data-edit='img'
-      data-action='onEditImage'
-      data-tooltip='{{actor.name}}'
-      height='64'
-      width='64'
-    />
-    <div class='document-name'>
-      <input
-        name='name'
-        type='text'
-        value='{{actor.name}}'
-        placeholder='Name'
-      />
+    <img class='profile-img' src='{{actor.img}}' data-edit='img' data-action='onEditImage' data-tooltip='{{actor.name}}' width=64/>
+    <div class='actor-info flexcol'>
+      <div class="flexrow">
+        <label class="name">{{localize "Name"}}</label>
+        <input name='name' type='text'  value='{{actor.name}}' placeholder='Name'/>
+      </div>
+      {{formGroup systemFields.age value=system.age type="number" classes="flexrow" label=(localize "UNIFIED.Actor.Explorer.FIELDS.age.label") }}
     </div>
  
   </div>

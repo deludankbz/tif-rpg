@@ -11,25 +11,29 @@ export default class UnifiedExplorer extends UnifiedActorBase {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
+    schema.think = new fields.NumberField({
+        ...requiredInteger,
+        initial: 6,
+        min: 0,
+        max: 10,
+    }),
+
+    schema.age = new fields.NumberField({ 
+      ...requiredInteger,
+      initial: 20,
+      min: 20,
+      max: 80
+    });
+
+    schema.notes = new fields.HTMLField();
+
     schema.attributes = new fields.SchemaField({
       level: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 1 }),
       }),
     });
 
-    // Iterate over ability names and create a new SchemaField for each.
-    schema.abilities = new fields.SchemaField(
-      Object.keys(CONFIG.UNIFIED.abilities).reduce((obj, ability) => {
-        obj[ability] = new fields.SchemaField({
-          value: new fields.NumberField({
-            ...requiredInteger,
-            initial: 10,
-            min: 0,
-          }),
-        });
-        return obj;
-      }, {})
-    );
+
 
     return schema;
   }

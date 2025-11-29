@@ -15,9 +15,9 @@
 /* Import sheets */
 @import 'sheets/actor/sheet-explorer';
 
-
 /* Styles limited to unified sheets */
 .unified {
+  @import 'components/content-link';
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/items';

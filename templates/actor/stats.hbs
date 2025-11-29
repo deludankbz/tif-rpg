@@ -1,12 +1,30 @@
 <section
-  class='tab stats scrollable {{tab.cssClass}}'
+  class='tab stats {{tab.cssClass}}'
   data-group='primary'
   data-tab='stats'
 >
 
-<div class="stats">
-  <p>test</p>
-  <label>{{system.health.value}}</label>
+<div class="stats flexcol">
+  <div class="vigor stat-field flexrow">
+    <div></div>
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/scale.svg" alt="">
+  </div>
+
+  <div class="vigor stat-field flexrow">
+    <label>{{localize "UNIFIED.Actor.base.FIELDS.vigor"}}</label>
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.vigor}}.svg" alt="">
+  </div>
+
+  <div class="think stat-field flexrow">
+    <label>{{localize "UNIFIED.Actor.base.FIELDS.think"}}</label>
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.think}}.svg" alt="">
+  </div>
+
+  <div class="oneiric stat-field flexrow">
+    <label>{{localize "UNIFIED.Actor.base.FIELDS.oneiric"}}</label>
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.oneiric}}.svg" alt="">
+  </div>
+
 </div>
 
 </section>

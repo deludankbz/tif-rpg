@@ -6,6 +6,9 @@ export class UnifiedActorExplorerSheet extends UnifiedActorSheet {
     position: {
       width: 400,
       height: 800,
-    }
+    },
+    defaultTab: "stats",
+    submitOnClose: true,
+    submitOnChange: true,
   };
 }

@@ -14,3 +14,11 @@
 @mixin hide {
   display: none;
 }
+
+// text mixins
+.lower  { text-transform: lowercase; }
+.upper  { text-transform: uppercase; }
+.italic { font-style: italic; }
+
+// variable fonts
+.demi { font-weight: 600; }

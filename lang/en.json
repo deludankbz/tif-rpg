@@ -15,6 +15,7 @@
     "Actor": {
       "Tabs": {
         "Biography": "Biography",
+        "Notes": "Notes",
         "Features": "Features",
         "Gear": "Gear",
         "Stats": "Stats",
@@ -23,19 +24,16 @@
       "base": {
         "FIELDS": {
           "biography": {"label": "Biography"},
-          "health": {
-            "value": {"label": "Health"},
-            "max": {"label": "Maximum Health"}
-          },
-          "power": {
-            "value": {"label": "Power"},
-            "max": {"label": "Maximum Power"}
-          }
+          "vigor":"Vigor",
+          "think": "Think",
+          "oneiric": "Oneiric"
         }
       },
-      "Character": {
-        "FIELDS": {
-          "attributes.level.value": {"label": "Level"}
+      "Explorer": {
+       "FIELDS": {
+          "age": {
+            "label": "Age"
+          }
         }
       },
       "NPC": {
@@ -79,8 +77,9 @@
   },
   "TYPES": {
     "Actor": {
-      "character": "Character",
-      "npc": "NPC"
+      "explorer": "Explorer",
+      "npc": "NPC",
+      "creature": "Creature"
     },
     "Item": {
       "gear": "Gear",

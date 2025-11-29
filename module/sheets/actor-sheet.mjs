@@ -1,11 +1,10 @@
-import { prepareActiveEffectCategories } from '../helpers/effects.mjs';
-
 const { api, sheets } = foundry.applications;
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
- * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheetV2}
- */
+* Extend the basic ActorSheet with some very simple modifications
+* @extends {ActorSheetV2}
+*/
 export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
@@ -30,7 +29,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       submitOnChange: true,
     },
   };
-
+  
   /** @override */
   static PARTS = {
     header: {
@@ -44,14 +43,18 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       template: 'systems/unified/templates/actor/stats.hbs',
       scrollable: [""],
     },
+    notes: {
+      template: 'systems/unified/templates/actor/notes.hbs',
+      scrollable: [""],
+    },
   };
-
+  
   /** @override */
   _configureRenderOptions(options) {
     // Add the current documents' actor type to the css classes.
     if (!this.options.classes.includes(this.document.type))
       this.options.classes.push(this.document.type);
-
+    
     super._configureRenderOptions(options);
     // Not all parts always render
     options.parts = [];
@@ -60,19 +63,19 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'explorer':
-        options.parts.push('header', 'tabs', 'stats');
-        break;
+      options.parts.push('header', 'tabs', 'stats', 'notes');
+      break;
       case 'npc':
-        options.parts.push('simple');
-        break;
+      options.parts.push('simple');
+      break;
       case 'creature':
-        options.parts.push('creature');
-        break;
+      options.parts.push('creature');
+      break;
     }
   }
-
+  
   /* -------------------------------------------- */
-
+  
   /** @override */
   async _prepareContext(options) {
     // Output initialization
@@ -93,25 +96,41 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields,
     };
-
-    console.warn(context.system);
+    
     // Offloading context prep to a helper function
     this._prepareItems(context);
-
+    
     return context;
   }
-
+  
   /** @override */
   async _preparePartContext(partId, context) {
+    switch (partId) {
+      case 'notes':
+        context.enrichedNotes = await TextEditor.enrichHTML(
+          this.actor.system.notes,
+          {
+            // Whether to show secret blocks in the finished html
+            secrets: this.document.isOwner,
+            // Data to fill in for inline rolls
+            rollData: this.actor.getRollData(),
+            // Relative UUID resolution
+            relativeTo: this.actor,
+          }
+        );
+      break;
+    }
+
+    context.tab = context.tabs[partId];
     return context;
   }
-
+  
   /**
-   * Generates the data for the generic tab navigation template
-   * @param {string[]} parts An array of named template parts to render
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   * @protected
-   */
+  * Generates the data for the generic tab navigation template
+  * @param {string[]} parts An array of named template parts to render
+  * @returns {Record<string, Partial<ApplicationTab>>}
+  * @protected
+  */
   _getTabs(parts) {
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
@@ -131,51 +150,55 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       switch (partId) {
         case 'header':
         case 'tabs':
-          return tabs;
+        return tabs;
         case 'biography':
-          tab.id = 'biography';
-          tab.label += 'Biography';
-          break;
+        tab.id = 'biography';
+        tab.label += 'Biography';
+        break;
         case 'features':
-          tab.id = 'features';
-          tab.label += 'Features';
-          break;
+        tab.id = 'features';
+        tab.label += 'Features';
+        break;
         case 'gear':
-          tab.id = 'gear';
-          tab.label += 'Gear';
-          break;
+        tab.id = 'gear';
+        tab.label += 'Gear';
+        break;
         case 'stats':
-          tab.id = 'stats';
-          tab.label += 'Stats';
-          break;
+        tab.id = 'stats';
+        tab.label += 'Stats';
+        break;
+        case 'notes':
+        tab.id = 'notes';
+        tab.label += 'Notes';
+        break;
         case 'effects':
-          tab.id = 'effects';
-          tab.label += 'Effects';
-          break;
+        tab.id = 'effects';
+        tab.label += 'Effects';
+        break;
       }
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
       tabs[partId] = tab;
       return tabs;
     }, {});
   }
-
+  
   /**
-   * Organize and classify Items for Actor sheets.
-   *
-   * @param {object} context The context object to mutate
-   */
+  * Organize and classify Items for Actor sheets.
+  *
+  * @param {object} context The context object to mutate
+  */
   _prepareItems(context) {
-   
+    
   }
-
+  
   /**
-   * Actions performed after any render of the Application.
-   * Post-render steps are not awaited by the render process.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
-   * @protected
-   * @override
-   */
+  * Actions performed after any render of the Application.
+  * Post-render steps are not awaited by the render process.
+  * @param {ApplicationRenderContext} context      Prepared context data
+  * @param {RenderOptions} options                 Provided render options
+  * @protected
+  * @override
+  */
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#disableOverrides();
@@ -183,28 +206,28 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
     // Foundry comes with a large number of utility classes, e.g. SearchFilter
     // That you may want to implement yourself.
   }
-
+  
   /**************
-   *
-   *   ACTIONS
-   *
-   **************/
-
+  *
+  *   ACTIONS
+  *
+  **************/
+  
   /**
-   * Handle changing a Document's image.
-   *
-   * @this UnifiedActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @returns {Promise}
-   * @protected
-   */
+  * Handle changing a Document's image.
+  *
+  * @this UnifiedActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @returns {Promise}
+  * @protected
+  */
   static async _onEditImage(event, target) {
     const attr = target.dataset.edit;
     const current = foundry.utils.getProperty(this.document, attr);
     const { img } =
-      this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
-      {};
+    this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
+    {};
     const fp = new FilePicker({
       current,
       type: 'image',
@@ -217,41 +240,41 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
     });
     return fp.browse();
   }
-
+  
   /**
-   * Renders an embedded document's sheet
-   *
-   * @this UnifiedActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
-   */
+  * Renders an embedded document's sheet
+  *
+  * @this UnifiedActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @protected
+  */
   static async _viewDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
     doc.sheet.render(true);
   }
-
+  
   /**
-   * Handles item deletion
-   *
-   * @this UnifiedActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
-   */
+  * Handles item deletion
+  *
+  * @this UnifiedActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @protected
+  */
   static async _deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
     await doc.delete();
   }
-
+  
   /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
-   *
-   * @this UnifiedActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
+  * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
+  *
+  * @this UnifiedActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @private
+  */
   static async _createDoc(event, target) {
     // Retrieve the configured document class for Item or ActiveEffect
     const docCls = getDocumentClass(target.dataset.documentClass);
@@ -272,43 +295,43 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       // which turns into the dataKey 'system.spellLevel'
       foundry.utils.setProperty(docData, dataKey, value);
     }
-
+    
     // Finally, create the embedded document!
     await docCls.create(docData, { parent: this.actor });
   }
-
+  
   /**
-   * Determines effect parent to pass to helper
-   *
-   * @this UnifiedActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
+  * Determines effect parent to pass to helper
+  *
+  * @this UnifiedActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @private
+  */
   static async _toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
     await effect.update({ disabled: !effect.disabled });
   }
-
+  
   /**
-   * Handle clickable rolls.
-   *
-   * @this UnifiedActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
-   */
+  * Handle clickable rolls.
+  *
+  * @this UnifiedActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @protected
+  */
   static async _onRoll(event, target) {
     event.preventDefault();
     const dataset = target.dataset;
-
+    
     // Handle item rolls.
     switch (dataset.rollType) {
       case 'item':
-        const item = this._getEmbeddedDocument(target);
-        if (item) return item.roll();
+      const item = this._getEmbeddedDocument(target);
+      if (item) return item.roll();
     }
-
+    
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
       let label = dataset.label ? `[ability] ${dataset.label}` : '';
@@ -321,41 +344,41 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       return roll;
     }
   }
-
+  
   /** Helper Functions */
-
+  
   /**
-   * Fetches the embedded document representing the containing HTML element
-   *
-   * @param {HTMLElement} target    The element subject to search
-   * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
-   */
+  * Fetches the embedded document representing the containing HTML element
+  *
+  * @param {HTMLElement} target    The element subject to search
+  * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
+  */
   _getEmbeddedDocument(target) {
     const docRow = target.closest('li[data-document-class]');
     if (docRow.dataset.documentClass === 'Item') {
       return this.actor.items.get(docRow.dataset.itemId);
     } else if (docRow.dataset.documentClass === 'ActiveEffect') {
       const parent =
-        docRow.dataset.parentId === this.actor.id
-          ? this.actor
-          : this.actor.items.get(docRow?.dataset.parentId);
+      docRow.dataset.parentId === this.actor.id
+      ? this.actor
+      : this.actor.items.get(docRow?.dataset.parentId);
       return parent.effects.get(docRow?.dataset.effectId);
     } else return console.warn('Could not find document class');
   }
-
+  
   /***************
-   *
-   * Drag and Drop
-   *
-   ***************/
-
+  *
+  * Drag and Drop
+  *
+  ***************/
+  
   /**
-   * Handle the dropping of ActiveEffect data onto an Actor Sheet
-   * @param {DragEvent} event                  The concluding DragEvent which contains drop data
-   * @param {object} data                      The data transfer extracted from the event
-   * @returns {Promise<ActiveEffect|boolean>}  The created ActiveEffect object or false if it couldn't be created.
-   * @protected
-   */
+  * Handle the dropping of ActiveEffect data onto an Actor Sheet
+  * @param {DragEvent} event                  The concluding DragEvent which contains drop data
+  * @param {object} data                      The data transfer extracted from the event
+  * @returns {Promise<ActiveEffect|boolean>}  The created ActiveEffect object or false if it couldn't be created.
+  * @protected
+  */
   async _onDropActiveEffect(event, data) {
     const aeCls = getDocumentClass('ActiveEffect');
     const effect = await aeCls.fromDropData(data);
@@ -364,22 +387,22 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       return this._onSortActiveEffect(event, effect);
     return aeCls.create(effect, { parent: this.actor });
   }
-
+  
   /**
-   * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings
-   *
-   * @param {DragEvent} event
-   * @param {ActiveEffect} effect
-   */
+  * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings
+  *
+  * @param {DragEvent} event
+  * @param {ActiveEffect} effect
+  */
   async _onSortActiveEffect(event, effect) {
     /** @type {HTMLElement} */
     const dropTarget = event.target.closest('[data-effect-id]');
     if (!dropTarget) return;
     const target = this._getEmbeddedDocument(dropTarget);
-
+    
     // Don't sort on yourself
     if (effect.uuid === target.uuid) return;
-
+    
     // Identify sibling items based on adjacent HTML elements
     const siblings = [];
     for (const el of dropTarget.parentElement.children) {
@@ -390,18 +413,18 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
         parentId &&
         (siblingId !== effect.id || parentId !== effect.parent.id)
       )
-        siblings.push(this._getEmbeddedDocument(el));
+      siblings.push(this._getEmbeddedDocument(el));
     }
-
+    
     // Perform the sort
     const sortUpdates = SortingHelpers.performIntegerSort(effect, {
       target,
       siblings,
     });
-
+    
     // Split the updates up by parent document
     const directUpdates = [];
-
+    
     const grandchildUpdateData = sortUpdates.reduce((items, u) => {
       const parentId = u.target.parent.id;
       const update = { _id: u.target.id, ...u.update };
@@ -413,40 +436,40 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       else items[parentId] = [update];
       return items;
     }, {});
-
+    
     // Effects-on-items updates
     for (const [itemId, updates] of Object.entries(grandchildUpdateData)) {
       await this.actor.items
-        .get(itemId)
-        .updateEmbeddedDocuments('ActiveEffect', updates);
+      .get(itemId)
+      .updateEmbeddedDocuments('ActiveEffect', updates);
     }
-
+    
     // Update on the main actor
     return this.actor.updateEmbeddedDocuments('ActiveEffect', directUpdates);
   }
-
+  
   /**
-   * Handle dropping of an Actor data onto another Actor sheet
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data
-   * @param {object} data                The data transfer extracted from the event
-   * @returns {Promise<object|boolean>}  A data object which describes the result of the drop, or false if the drop was
-   *                                     not permitted.
-   * @protected
-   */
+  * Handle dropping of an Actor data onto another Actor sheet
+  * @param {DragEvent} event            The concluding DragEvent which contains drop data
+  * @param {object} data                The data transfer extracted from the event
+  * @returns {Promise<object|boolean>}  A data object which describes the result of the drop, or false if the drop was
+  *                                     not permitted.
+  * @protected
+  */
   async _onDropActor(event, data) {
     if (!this.actor.isOwner) return false;
   }
-
+  
   /* -------------------------------------------- */
-
+  
   /**
-   * Handle dropping of a Folder on an Actor Sheet.
-   * The core sheet currently supports dropping a Folder of Items to create all items as owned items.
-   * @param {DragEvent} event     The concluding DragEvent which contains drop data
-   * @param {object} data         The data transfer extracted from the event
-   * @returns {Promise<Item[]>}
-   * @protected
-   */
+  * Handle dropping of a Folder on an Actor Sheet.
+  * The core sheet currently supports dropping a Folder of Items to create all items as owned items.
+  * @param {DragEvent} event     The concluding DragEvent which contains drop data
+  * @param {object} data         The data transfer extracted from the event
+  * @returns {Promise<Item[]>}
+  * @protected
+  */
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return [];
     const folder = await Folder.implementation.fromDropData(data);
@@ -459,44 +482,44 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
     );
     return this._onDropItemCreate(droppedItemData, event);
   }
-
+  
   /**
-   * Handle the final creation of dropped Item data on the Actor.
-   * This method is factored out to allow downstream classes the opportunity to override item creation behavior.
-   * @param {object[]|object} itemData      The item data requested for creation
-   * @param {DragEvent} event               The concluding DragEvent which provided the drop data
-   * @returns {Promise<Item[]>}
-   * @private
-   */
+  * Handle the final creation of dropped Item data on the Actor.
+  * This method is factored out to allow downstream classes the opportunity to override item creation behavior.
+  * @param {object[]|object} itemData      The item data requested for creation
+  * @param {DragEvent} event               The concluding DragEvent which provided the drop data
+  * @returns {Promise<Item[]>}
+  * @private
+  */
   async _onDropItemCreate(itemData, event) {
     itemData = itemData instanceof Array ? itemData : [itemData];
     return this.actor.createEmbeddedDocuments('Item', itemData);
   }
-
+  
   /********************
-   *
-   * Actor Override Handling
-   *
-   ********************/
-
+  *
+  * Actor Override Handling
+  *
+  ********************/
+  
   /**
-   * Submit a document update based on the processed form data.
-   * @param {SubmitEvent} event                   The originating form submission event
-   * @param {HTMLFormElement} form                The form element that was submitted
-   * @param {object} submitData                   Processed and validated form data to be used for a document update
-   * @returns {Promise<void>}
-   * @protected
-   * @override
-   */
+  * Submit a document update based on the processed form data.
+  * @param {SubmitEvent} event                   The originating form submission event
+  * @param {HTMLFormElement} form                The form element that was submitted
+  * @param {object} submitData                   Processed and validated form data to be used for a document update
+  * @returns {Promise<void>}
+  * @protected
+  * @override
+  */
   async _processSubmitData(event, form, submitData) {
     const overrides = foundry.utils.flattenObject(this.actor.overrides);
     for (let k of Object.keys(overrides)) delete submitData[k];
     await this.document.update(submitData);
   }
-
+  
   /**
-   * Disables inputs subject to active effects
-   */
+  * Disables inputs subject to active effects
+  */
   #disableOverrides() {
     const flatOverrides = foundry.utils.flattenObject(this.actor.overrides);
     for (const override of Object.keys(flatOverrides)) {
