@@ -1,6 +1,6 @@
-import UnifiedDataModel from "./base-model.mjs";
-
-export default class UnifiedActorBase extends UnifiedDataModel {
+export default class UnifiedActorBase extends foundry.abstract
+  .TypeDataModel {
+  static LOCALIZATION_PREFIXES = ["UNIFIED.Actor.base"];
 
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -8,16 +8,19 @@ export default class UnifiedActorBase extends UnifiedDataModel {
     const schema = {};
 
     schema.health = new fields.SchemaField({
-      value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
-      max: new fields.NumberField({ ...requiredInteger, initial: 10 })
+      value: new fields.NumberField({
+        ...requiredInteger,
+        initial: 10,
+        min: 0,
+      }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 10 }),
     });
     schema.power = new fields.SchemaField({
       value: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
-      max: new fields.NumberField({ ...requiredInteger, initial: 5 })
+      max: new fields.NumberField({ ...requiredInteger, initial: 5 }),
     });
-    schema.biography = new fields.StringField({ required: true, blank: true }); // equivalent to passing ({initial: ""}) for StringFields
+    schema.biography = new fields.HTMLField();
 
     return schema;
   }
-
 }

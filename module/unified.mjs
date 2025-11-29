@@ -5,24 +5,35 @@ import { UnifiedItem } from './documents/item.mjs';
 import { UnifiedActorSheet } from './sheets/actor-sheet.mjs';
 import { UnifiedItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
-import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { UNIFIED } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
+
+const collections = foundry.documents.collections;
+const sheets = foundry.appv1.sheets;
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once('init', function () {
-  // Add utility classes to the global game object so that they're more easily
-  // accessible in global contexts.
-  game.unified = {
+// Add key classes to the global scope so they can be more easily used
+// by downstream developers
+globalThis.unified = {
+  documents: {
     UnifiedActor,
     UnifiedItem,
+  },
+  applications: {
+    UnifiedActorSheet,
+    UnifiedItemSheet,
+  },
+  utils: {
     rollItemMacro,
-  };
+  },
+  models,
+};
 
+Hooks.once('init', function () {
   // Add custom constants for configuration.
   CONFIG.UNIFIED = UNIFIED;
 
@@ -43,14 +54,14 @@ Hooks.once('init', function () {
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
     character: models.UnifiedCharacter,
-    npc: models.UnifiedNPC
-  }
+    npc: models.UnifiedNPC,
+  };
   CONFIG.Item.documentClass = UnifiedItem;
   CONFIG.Item.dataModels = {
-    item: models.UnifiedItem,
+    gear: models.UnifiedGear,
     feature: models.UnifiedFeature,
-    spell: models.UnifiedSpell
-  }
+    spell: models.UnifiedSpell,
+  };
 
   // Active Effects are never copied to the Actor,
   // but will still apply to the Actor from within the Item
@@ -58,19 +69,16 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('unified', UnifiedActorSheet, {
+  collections.Actors.unregisterSheet('core', sheets.ActorSheet);
+  collections.Actors.registerSheet('unified', UnifiedActorSheet, {
     makeDefault: true,
     label: 'UNIFIED.SheetLabels.Actor',
   });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('unified', UnifiedItemSheet, {
+  collections.Items.unregisterSheet('core', sheets.ItemSheet);
+  collections.Items.registerSheet('unified', UnifiedItemSheet, {
     makeDefault: true,
     label: 'UNIFIED.SheetLabels.Item',
   });
-
-  // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */
@@ -88,7 +96,7 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 
 Hooks.once('ready', function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+  Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -102,7 +110,7 @@ Hooks.once('ready', function () {
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createItemMacro(data, slot) {
+async function createDocMacro(data, slot) {
   // First, determine if this is a valid owned item.
   if (data.type !== 'Item') return;
   if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
