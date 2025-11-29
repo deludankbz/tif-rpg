@@ -55,9 +55,8 @@ Hooks.once('init', function () {
   };
   CONFIG.Item.documentClass = UnifiedItem;
   CONFIG.Item.dataModels = {
-    gear: models.UnifiedGear,
-    feature: models.UnifiedFeature,
-    spell: models.UnifiedSpell,
+    equipment: models.UnifiedGear,
+    weapon: models.UnifiedFeature,
   };
 
   // Active Effects are never copied to the Actor,
@@ -67,7 +66,7 @@ Hooks.once('init', function () {
 
   // Register sheet application classes
   collections.Actors.unregisterSheet('core', foundrySheets.ActorSheet);
-  collections.Actors.registerSheet('unified', sheets.UnifiedActorSheet, {
+  collections.Actors.registerSheet('unified', sheets.UnifiedActorExplorerSheet, {
     types: ["explorer"],
     makeDefault: true,
     label: 'UNIFIED.SheetLabels.Actor',

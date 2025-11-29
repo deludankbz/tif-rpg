@@ -1,0 +1,33 @@
+/* Set type-face */
+// Inter
+@font-face {
+  font-family: Inter;
+  font-weight: 100 900;
+  src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf')
+}
+
+@font-face {
+  font-family: Inter;
+  font-weight: 100 900;
+  src: url('../fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf../fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf');
+  font-style: italic;
+}
+
+// Gasoek One
+@font-face {
+  font-family: Gasoek One;
+  // font-weight: 100 900;
+  src: url('../fonts/Gasoek_One/GasoekOne-Regular.ttf')
+}
+
+// Gasoek One
+@font-face {
+  font-family: Jua;
+  // font-weight: 100 900;
+  src: url('../fonts/Jua/Jua-Regular.ttf')
+}
+
+
+$font-body: Inter, sans-serif;
+$font-header: Gasoek One, sans-serif;
+$font-cursive: Jua, sans-serif;

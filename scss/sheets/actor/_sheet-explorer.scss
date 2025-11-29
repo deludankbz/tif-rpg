@@ -1,0 +1,25 @@
+.sheet.unified.explorer {
+  /* Color scheme */
+  $pri: $c-green;
+  $sec: $c-dark-green;
+
+  --background: #{$sec};
+  --color-text-primary: #{$pri};
+
+  /* Extra */
+  border-radius: 0;
+
+  /* Fonts */
+  --font-body: #{$font-body};
+  
+  .sheet-tabs {
+    --color-text-primary: #{$sec};
+    background-color: $pri;
+    border: none;
+  }
+
+  /* Sections */
+  section.tab.stats {
+    --color-text-primary: red; 
+  }
+}

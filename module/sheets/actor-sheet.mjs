@@ -40,42 +40,33 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
-    features: {
-      template: 'systems/unified/templates/actor/features.hbs',
-      scrollable: [""],
-    },
-    biography: {
-      template: 'systems/unified/templates/actor/biography.hbs',
-      scrollable: [""],
-    },
-    gear: {
-      template: 'systems/unified/templates/actor/gear.hbs',
-      scrollable: [""],
-    },
-    spells: {
-      template: 'systems/unified/templates/actor/spells.hbs',
-      scrollable: [""],
-    },
-    effects: {
-      template: 'systems/unified/templates/actor/effects.hbs',
+    stats: {
+      template: 'systems/unified/templates/actor/stats.hbs',
       scrollable: [""],
     },
   };
 
   /** @override */
   _configureRenderOptions(options) {
+    // Add the current documents' actor type to the css classes.
+    if (!this.options.classes.includes(this.document.type))
+      this.options.classes.push(this.document.type);
+
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'tabs', 'biography'];
+    options.parts = [];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
     switch (this.document.type) {
-      case 'character':
-        options.parts.push('features', 'gear', 'spells', 'effects');
+      case 'explorer':
+        options.parts.push('header', 'tabs', 'stats');
         break;
       case 'npc':
-        options.parts.push('gear', 'effects');
+        options.parts.push('simple');
+        break;
+      case 'creature':
+        options.parts.push('creature');
         break;
     }
   }
@@ -103,6 +94,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       systemFields: this.document.system.schema.fields,
     };
 
+    console.warn(context.system);
     // Offloading context prep to a helper function
     this._prepareItems(context);
 
@@ -111,38 +103,6 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   async _preparePartContext(partId, context) {
-    switch (partId) {
-      case 'features':
-      case 'spells':
-      case 'gear':
-        context.tab = context.tabs[partId];
-        break;
-      case 'biography':
-        context.tab = context.tabs[partId];
-        // Enrich biography info for display
-        // Enrichment turns text like `[[/r 1d20]]` into buttons
-        context.enrichedBiography = await TextEditor.enrichHTML(
-          this.actor.system.biography,
-          {
-            // Whether to show secret blocks in the finished html
-            secrets: this.document.isOwner,
-            // Data to fill in for inline rolls
-            rollData: this.actor.getRollData(),
-            // Relative UUID resolution
-            relativeTo: this.actor,
-          }
-        );
-        break;
-      case 'effects':
-        context.tab = context.tabs[partId];
-        // Prepare active effects
-        context.effects = prepareActiveEffectCategories(
-          // A generator that returns all effects stored on the actor
-          // as well as any items
-          this.actor.allApplicableEffects()
-        );
-        break;
-    }
     return context;
   }
 
@@ -184,9 +144,9 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = 'gear';
           tab.label += 'Gear';
           break;
-        case 'spells':
-          tab.id = 'spells';
-          tab.label += 'Spells';
+        case 'stats':
+          tab.id = 'stats';
+          tab.label += 'Stats';
           break;
         case 'effects':
           tab.id = 'effects';
