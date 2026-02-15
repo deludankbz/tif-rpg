@@ -22,3 +22,18 @@
 
 // variable fonts
 .demi { font-weight: 600; }
+
+// chisel effect 
+.chisel-2px {
+  box-shadow: 
+    inset 0px 2px 0px 0px  rgba(black, 0.2),
+    inset 0px -2px 0px 0px rgba(white, 0.2),
+    inset 0px 0px 4px 0px rgba(black, 0.2);
+}
+
+.inv-chisel-2px {
+  box-shadow: 
+    inset 0px -2px 0px 0px  rgba(black, 0.2),
+    inset 0px 2px 0px 0px rgba(white, 0.2),
+    inset 0px 0px 4px 0px rgba(black, 0.2);
+}

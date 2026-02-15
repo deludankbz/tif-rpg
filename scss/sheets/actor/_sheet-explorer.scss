@@ -1,34 +1,21 @@
-// Basic color scheme
-$pri: $c-green;
-$sec: $c-dark-green;
-
 .sheet.unified.explorer {
   /* Color scheme */
 
-  --background: #{$sec};
-  --color-text-primary: #{$pri};
-  --color-header-background: #{$sec};
-  --color-border: #{$pri};
+  --background: #{$c-dark-green};
+  --color-text-primary: #{$c-green};
+  --color-header-background: #{$c-dark-green};
+  --color-border: #{$c-green};
   .window-header {
-    button { --button-text-color: #{$pri}; } 
+    button { --button-text-color: #{$c-green}; } 
   }
 
-  /* Extra */
-  // border-radius: 0;
-
-  /* Fonts */
-  --font-body: #{$font-body};
-  
   .sheet-tabs {
-    --color-text-primary: #{$sec};
+    --color-text-primary: #{$c-dark-green};
     --color-text-emphatic: var(--color-text-primary);
-    background-color: $pri;
+    background-color: $c-green;
     border: none;
-  }
 
-  /* Sections */
-  section.tab.stats {
-    --color-text-primary: red; 
+    margin-bottom: 12px;
   }
 }
 
@@ -43,16 +30,16 @@ $sec: $c-dark-green;
 
     label { 
       @extend .lower, .demi, .italic;
-      color: $sec;
+      color: $c-dark-green;
       padding-left: 4px;
-      background-color: $pri;
+      background-color: $c-green;
       vertical-align: bottom;
       height: fit-content; 
     }
 
     input {
-      --input-border-color: #{$pri};
-      --input-background-color: #{$sec};
+      --input-border-color: #{$c-green};
+      --input-background-color: #{$c-dark-green};
       border-radius: 0;
       width: 12rem; 
     }
@@ -63,7 +50,6 @@ $sec: $c-dark-green;
 .sheet.unified.explorer {
   .stats.flexcol {
     gap: 12px;
-    margin: 12px 0;
 
     label {
       font-size: 2em;
@@ -88,9 +74,36 @@ section.tab.notes {
 
     p { 
       font-family: $font-cursive;
-      color: $pri;
+      color: $c-green;
       font-size: 1.5rem;
       margin: 0
+    }
+  }
+}
+
+section.tab.inventory {
+  .inv {
+    $tile-size: 32px;
+    $tile-pos: ($tile-size / 2) * -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, $tile-size * 2);
+
+    background: url("../assets/ui/sheets/actors/explorer/inventory/inv-grid.webp");
+    background-repeat: repeat;
+    background-position-x: $tile-pos;
+    background-position-y: $tile-pos;
+    background-size: $tile-size;
+
+    .inv-item { 
+      align-items: center;
+
+      width: $tile-size * 2;
+      height: $tile-size * 2;
+
+      img {
+        width: 46px;
+        margin: auto;
+      }
     }
   }
 }

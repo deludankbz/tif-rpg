@@ -16,3 +16,23 @@ body {
     cursor: pointer;
   }
 }
+
+/* default unfied windows */
+.sheet.unified {
+  /* Color scheme */
+
+  /* Extra */
+  border-radius: 0;
+  
+  .sheet-tabs {
+    --color-text-primary: #{$c-green};
+    --color-text-emphatic: var(--color-text-primary);
+    background-color: $c-dark-green;
+    border: none;
+  }
+
+  /* Sections */
+  section.tab.stats {
+    --color-text-primary: red; 
+  }
+}

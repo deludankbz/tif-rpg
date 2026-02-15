@@ -19,7 +19,7 @@
         "Features": "Features",
         "Gear": "Gear",
         "Stats": "Stats",
-        "Effects": "Effects"
+        "Inventory": "Inventory"
       },
       "base": {
         "FIELDS": {
@@ -82,9 +82,9 @@
       "creature": "Creature"
     },
     "Item": {
-      "gear": "Gear",
-      "feature": "Feature",
-      "spell": "Spell"
+      "equipment": "Equipment",
+      "weapon": "Weapon",
+      "skill": "Skill"
     }
   }
 }

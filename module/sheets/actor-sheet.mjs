@@ -9,6 +9,13 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
   /** @override */
+  static defineSchema() {
+    return {
+      test: new fields.StringField({blank: false})
+    };
+  }
+  
+  /** @override */
   static DEFAULT_OPTIONS = {
     classes: ['unified', 'actor'],
     position: {
@@ -47,6 +54,10 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       template: 'systems/unified/templates/actor/notes.hbs',
       scrollable: [""],
     },
+    inventory: {
+      template: 'systems/unified/templates/actor/inventory.hbs',
+      scrollable: [""],
+    },
   };
   
   /** @override */
@@ -63,7 +74,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'explorer':
-      options.parts.push('header', 'tabs', 'stats', 'notes');
+      options.parts.push('header', 'tabs', 'stats', 'notes', 'inventory');
       break;
       case 'npc':
       options.parts.push('simple');
@@ -107,20 +118,20 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case 'notes':
-        context.enrichedNotes = await TextEditor.enrichHTML(
-          this.actor.system.notes,
-          {
-            // Whether to show secret blocks in the finished html
-            secrets: this.document.isOwner,
-            // Data to fill in for inline rolls
-            rollData: this.actor.getRollData(),
-            // Relative UUID resolution
-            relativeTo: this.actor,
-          }
-        );
+      context.enrichedNotes = await TextEditor.enrichHTML(
+        this.actor.system.notes,
+        {
+          // Whether to show secret blocks in the finished html
+          secrets: this.document.isOwner,
+          // Data to fill in for inline rolls
+          rollData: this.actor.getRollData(),
+          // Relative UUID resolution
+          relativeTo: this.actor,
+        }
+      );
       break;
     }
-
+    
     context.tab = context.tabs[partId];
     return context;
   }
@@ -134,8 +145,11 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   _getTabs(parts) {
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
+    
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'biography';
+    if (!this.tabGroups[tabGroup])
+      this.tabGroups[tabGroup] = 'stats';
+    
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
@@ -171,11 +185,19 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
         tab.id = 'notes';
         tab.label += 'Notes';
         break;
-        case 'effects':
-        tab.id = 'effects';
-        tab.label += 'Effects';
+        case 'inventory':
+        tab.id = 'inventory';
+        tab.label += 'Inventory';
         break;
+        default:
+        let config = partId;
+        if (this.constructor.TABS_CONFIGURATION[partId])
+          config = this.constructor.TABS_CONFIGURATION[partId];
+        
+        tab.id = config.toLowerCase();
+        tab.label += `${config.charAt(0).toUpperCase()}${config.substring(1)}`;
       }
+      
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
       tabs[partId] = tab;
       return tabs;
@@ -188,7 +210,31 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   * @param {object} context The context object to mutate
   */
   _prepareItems(context) {
+    const equipments = [];
+    const weapons = [];
+    const skills = [];
     
+    for (let i of this.document.items) {
+      if (i.type === 'weapon') {
+        weapons.push(i);
+        continue;
+      }
+      if (i.type === 'equipment') {
+        equipments.push(i);
+        continue;
+      }
+      if (i.type === 'skill') {
+        skills.push(i);
+        continue;
+      }
+    }
+    
+    // Sort then assign
+    context.equipments = equipments.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.weapons = weapons.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.skills = weapons.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    
+    return context;
   }
   
   /**

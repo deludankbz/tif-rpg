@@ -1,7 +1,7 @@
 <section
-  class='tab stats {{tab.cssClass}}'
+  class='tab stats {{tab.id}} {{tab.cssClass}}'
   data-group='primary'
-  data-tab='stats'
+  data-tab='{{tab.id}}'
 >
 
 <div class="stats flexcol">
@@ -12,17 +12,17 @@
 
   <div class="vigor stat-field flexrow">
     <label>{{localize "UNIFIED.Actor.base.FIELDS.vigor"}}</label>
-    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.vigor}}.svg" alt="">
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.vigor}}.svg" data-tooltip="{{system.vigor}}">
   </div>
 
   <div class="think stat-field flexrow">
     <label>{{localize "UNIFIED.Actor.base.FIELDS.think"}}</label>
-    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.think}}.svg" alt="">
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.think}}.svg" data-tooltip="{{system.think}}">
   </div>
 
   <div class="oneiric stat-field flexrow">
     <label>{{localize "UNIFIED.Actor.base.FIELDS.oneiric"}}</label>
-    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.oneiric}}.svg" alt="">
+    <img src="systems/unified/assets/ui/sheets/actors/explorer/stat-bars/{{system.oneiric}}.svg" data-tooltip="{{system.oneiric}}">
   </div>
 
 </div>
