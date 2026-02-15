@@ -1,6 +1,6 @@
-import { UnifiedActorSheet } from "./actor-sheet.mjs";
+import { MiniD6ActorSheet } from "./actor-sheet.mjs";
 
-export class UnifiedActorExplorerSheet extends UnifiedActorSheet {
+export class MiniD6ActorExplorerSheet extends MiniD6ActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ['simple'],
     position: {

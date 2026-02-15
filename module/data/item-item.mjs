@@ -1,6 +1,6 @@
-import UnifiedItemBase from "./base-item.mjs";
+import MiniD6ItemBase from "./base-item.mjs";
 
-export default class UnifiedItem extends UnifiedItemBase {
+export default class MiniD6Item extends MiniD6ItemBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;

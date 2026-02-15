@@ -1,9 +1,9 @@
-import UnifiedActorBase from './base-actor.mjs';
+import MiniD6ActorBase from './base-actor.mjs';
 
-export default class UnifiedExplorer extends UnifiedActorBase {
+export default class MiniD6Explorer extends MiniD6ActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'UNIFIED.Actor.Character',
+    'MINID6.Actor.Character',
   ];
 
   static defineSchema() {
@@ -47,7 +47,7 @@ export default class UnifiedExplorer extends UnifiedActorBase {
       );
       // Handle ability label localization.
       this.abilities[key].label =
-        game.i18n.localize(CONFIG.UNIFIED.abilities[key]) ?? key;
+        game.i18n.localize(CONFIG.MINID6.abilities[key]) ?? key;
     }
   }
 

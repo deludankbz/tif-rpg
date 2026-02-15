@@ -1,9 +1,9 @@
-import UnifiedItemBase from './base-item.mjs';
+import MiniD6ItemBase from './base-item.mjs';
 
-export default class UnifiedGear extends UnifiedItemBase {
+export default class MiniD6Gear extends MiniD6ItemBase {
   static LOCALIZATION_PREFIXES = [
-    'UNIFIED.Item.base',
-    'UNIFIED.Item.Gear',
+    'MINID6.Item.base',
+    'MINID6.Item.Gear',
   ];
 
   static defineSchema() {

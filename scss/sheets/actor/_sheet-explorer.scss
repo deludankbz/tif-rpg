@@ -1,4 +1,4 @@
-.sheet.unified.explorer {
+.sheet.miniD6.explorer {
   /* Color scheme */
 
   --background: #{$c-dark-green};
@@ -25,7 +25,7 @@
 }
 
 /* Custom form-groups */
-.sheet.unified.explorer:has(.form-group) {
+.sheet.miniD6.explorer:has(.form-group) {
   .header-fields {
 
     label { 
@@ -47,7 +47,7 @@
 }
 
 /* Stats */
-.sheet.unified.explorer {
+.sheet.miniD6.explorer {
   .stats.flexcol {
     gap: 12px;
 

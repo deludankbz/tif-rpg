@@ -8,17 +8,17 @@ export function prepareActiveEffectCategories(effects) {
   const categories = {
     temporary: {
       type: 'temporary',
-      label: game.i18n.localize('UNIFIED.Effect.Temporary'),
+      label: game.i18n.localize('MINID6.Effect.Temporary'),
       effects: [],
     },
     passive: {
       type: 'passive',
-      label: game.i18n.localize('UNIFIED.Effect.Passive'),
+      label: game.i18n.localize('MINID6.Effect.Passive'),
       effects: [],
     },
     inactive: {
       type: 'inactive',
-      label: game.i18n.localize('UNIFIED.Effect.Inactive'),
+      label: game.i18n.localize('MINID6.Effect.Inactive'),
       effects: [],
     },
   };

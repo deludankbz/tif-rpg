@@ -1,7 +1,7 @@
 {
-  "id": "unified",
-  "title": "Unified",
-  "description": "The Unified system for FoundryVTT!",
+  "id": "miniD6",
+  "title": "MiniD6",
+  "description": "The MiniD6 system for FoundryVTT!",
   "authors": [
     {
       "name": "L. Pessoa",
@@ -43,8 +43,8 @@
   "media": [
     {
       "type": "setup",
-      "url": "systems/unified/assets/unified-logo.webp",
-      "thumbnail": "systems/unified/assets/unified-logo.webp"
+      "url": "systems/miniD6/assets/minid6-splash.png",
+      "thumbnail": "systems/miniD6/assets/minid6-splash.png"
     }
   ],
   "version": "2.0.0",
@@ -52,8 +52,8 @@
     "minimum": 13,
     "verified": "13"
   },
-  "esmodules": ["module/unified.mjs"],
-  "styles": ["css/unified.css"],
+  "esmodules": ["module/miniD6.mjs"],
+  "styles": ["css/miniD6.css"],
   "languages": [
     {
       "lang": "en",
@@ -66,7 +66,7 @@
   "socket": false,
   "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
   "download": "This must link to a .zip file of the current version",
-  "background": "systems/unified/assets/unified-logo.webp",
+  "background": "systems/miniD6/assets/minid6-splash.png",
   "primaryTokenAttribute": "vigor",
   "secondaryTokenAttribute": "power"
 }

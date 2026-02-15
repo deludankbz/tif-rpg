@@ -5,7 +5,7 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
 * Extend the basic ActorSheet with some very simple modifications
 * @extends {ActorSheetV2}
 */
-export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
+export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
   /** @override */
@@ -17,7 +17,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['unified', 'actor'],
+    classes: ['miniD6', 'actor'],
     position: {
       width: 600,
       height: 600,
@@ -40,22 +40,22 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/unified/templates/actor/header.hbs',
+      template: 'systems/miniD6/templates/actor/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
     stats: {
-      template: 'systems/unified/templates/actor/stats.hbs',
+      template: 'systems/miniD6/templates/actor/stats.hbs',
       scrollable: [""],
     },
     notes: {
-      template: 'systems/unified/templates/actor/notes.hbs',
+      template: 'systems/miniD6/templates/actor/notes.hbs',
       scrollable: [""],
     },
     inventory: {
-      template: 'systems/unified/templates/actor/inventory.hbs',
+      template: 'systems/miniD6/templates/actor/inventory.hbs',
       scrollable: [""],
     },
   };
@@ -100,8 +100,8 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
       // Add the actor's data to context.data for easier access, as well as flags.
       system: this.actor.system,
       flags: this.actor.flags,
-      // Adding a pointer to CONFIG.UNIFIED
-      config: CONFIG.UNIFIED,
+      // Adding a pointer to CONFIG.MINID6
+      config: CONFIG.MINID6,
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
@@ -159,7 +159,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
         // FontAwesome Icon, if you so choose
         icon: '',
         // Run through localization
-        label: 'UNIFIED.Actor.Tabs.',
+        label: 'MINID6.Actor.Tabs.',
       };
       switch (partId) {
         case 'header':
@@ -262,7 +262,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle changing a Document's image.
   *
-  * @this UnifiedActorSheet
+  * @this MiniD6ActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @returns {Promise}
@@ -290,7 +290,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Renders an embedded document's sheet
   *
-  * @this UnifiedActorSheet
+  * @this MiniD6ActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected
@@ -303,7 +303,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handles item deletion
   *
-  * @this UnifiedActorSheet
+  * @this MiniD6ActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected
@@ -316,7 +316,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
   *
-  * @this UnifiedActorSheet
+  * @this MiniD6ActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @private
@@ -349,7 +349,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Determines effect parent to pass to helper
   *
-  * @this UnifiedActorSheet
+  * @this MiniD6ActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @private
@@ -362,7 +362,7 @@ export class UnifiedActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle clickable rolls.
   *
-  * @this UnifiedActorSheet
+  * @this MiniD6ActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected

@@ -1,9 +1,9 @@
-import UnifiedActorBase from './base-actor.mjs';
+import MiniD6ActorBase from './base-actor.mjs';
 
-export default class UnifiedNPC extends UnifiedActorBase {
+export default class MiniD6NPC extends MiniD6ActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'UNIFIED.Actor.NPC',
+    'MINID6.Actor.NPC',
   ];
 
   static defineSchema() {

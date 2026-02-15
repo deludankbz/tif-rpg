@@ -6,11 +6,11 @@
 export const preloadHandlebarsTemplates = async function () {
   return loadTemplates([
     // Actor partials.
-    'systems/unified/templates/actor/parts/actor-features.hbs',
-    'systems/unified/templates/actor/parts/actor-items.hbs',
-    'systems/unified/templates/actor/parts/actor-spells.hbs',
-    'systems/unified/templates/actor/parts/actor-effects.hbs',
+    'systems/miniD6/templates/actor/parts/actor-features.hbs',
+    'systems/miniD6/templates/actor/parts/actor-items.hbs',
+    'systems/miniD6/templates/actor/parts/actor-spells.hbs',
+    'systems/miniD6/templates/actor/parts/actor-effects.hbs',
     // Item partials
-    'systems/unified/templates/item/parts/item-effects.hbs',
+    'systems/miniD6/templates/item/parts/item-effects.hbs',
   ]);
 };

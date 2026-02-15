@@ -2,7 +2,7 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class UnifiedItem extends Item {
+export class MiniD6Item extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */

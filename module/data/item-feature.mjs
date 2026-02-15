@@ -1,8 +1,8 @@
-import UnifiedItemBase from './base-item.mjs';
+import MiniD6ItemBase from './base-item.mjs';
 
-export default class UnifiedFeature extends UnifiedItemBase {
+export default class MiniD6Feature extends MiniD6ItemBase {
   static LOCALIZATION_PREFIXES = [
-    'UNIFIED.Item.base',
-    'UNIFIED.Item.Feature',
+    'MINID6.Item.base',
+    'MINID6.Item.Feature',
   ];
 }

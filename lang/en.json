@@ -1,5 +1,5 @@
 {
-  "UNIFIED": {
+  "MINID6": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
       "Con": { "long": "Constitution", "abbr": "con" },
@@ -9,8 +9,8 @@
       "Cha": { "long": "Charisma", "abbr": "cha" }
     },
     "SheetLabels": {
-      "Actor": "Unified Actor Sheet",
-      "Item": "Unified Item Sheet"
+      "Actor": "MiniD6 Actor Sheet",
+      "Item": "MiniD6 Item Sheet"
     },
     "Actor": {
       "Tabs": {
