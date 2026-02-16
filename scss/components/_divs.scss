@@ -1,0 +1,26 @@
+
+// ------------------
+// DIVS
+// ------------------
+
+
+.md6-frame {
+  $c: $md6-cream-30;
+  border: 2px $c solid;
+  border-left: 0px;
+  border-right: 0px;
+
+  // border-top
+  &.bt {
+    border-top: 2px $c solid;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+  }
+
+  &.light { @extend .screen-bm; }
+  &.dark { 
+    @extend .screen-bm;
+    background-color: $md6-black-30;
+  }
+}

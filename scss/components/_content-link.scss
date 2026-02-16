@@ -1,11 +1,11 @@
 a {
   &.content-link,
   &.inline-roll { 
-    --content-link-background: $c-dark-green;
-    --content-link-text-color: $c-dark-green;
-    --content-link-icon-color: $c-green;
+    --content-link-background: $md6-dark-blue;
+    --content-link-text-color: $md6-dark-blue;
+    --content-link-icon-color: $md6-light-blue;
     --content-link-border-color: none;
     
-    border-bottom: 1px $c-green dashed;
+    border-bottom: 1px $md6-light-blue dashed;
  }
 }

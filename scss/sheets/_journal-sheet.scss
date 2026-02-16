@@ -1,50 +1,28 @@
 .sheet.journal-sheet:not(.journal-entry-page) {
-  background-color: $c-grey-blue;
+  background-color: $md6-dark-blue-80;
   
   button { 
     --button-focus-outline-color: none;
-    --button-hover-background-color: #{$c-dark-green};
+    --button-hover-background-color: #{$md6-dark-blue};
   }
   
   .window-header, .journal-sidebar {
-    --color-header-background: #{$c-grey-blue};
-    --color-light-1: #{$c-honeydew};
-
+    --color-light-1: #{$md6-cream};
+    
     .window-title {
       font-weight: 600;
     }
     
     input { 
       @extend .chisel-2px;
-      --input-background-color: #{$c-dark-grey-blue};
+      --input-background-color: #{$md6-dark-blue-60};
+      background-blend-mode: multiply;
       border: none;
     }
   }
   
   /* journal-sidebar */
   .journal-sidebar {
-    border-top: 2px $c-dark-grey-blue dashed;
     
-    .toc {
-      padding: 4px;
-      ol { }
-
-      li.text {
-         border: none;
-        .page-heading {
-          
-          span.page-title, 
-          span.page-index {
-            color: $c-honeydew;
-          }
-        }
-      }
-
-      li.text.active .page-heading {
-        @extend .inv-chisel-2px;
-        background-color: $c-dark-grey-blue;
-      }
-
-    }
   }
 }

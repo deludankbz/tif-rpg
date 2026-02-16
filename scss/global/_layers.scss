@@ -1,0 +1,29 @@
+/* ---------------------------------------- */
+/* Override foundry's default layers        */
+/* ---------------------------------------- */
+
+
+@layer elements.typography {
+  /* ---------------------------------------- */
+  /*  Headers                                 */
+  /* ---------------------------------------- */
+  
+  h1, h2, h3, 
+  h4, h5, h6
+  {
+    color: var(--color-text-primary);
+  }
+  
+  .md6 {
+    h1, h2, h3, 
+    h4, h5, h6
+    {
+      font-family: $font-body;
+      color: var(--color-text-primary);
+    }
+  }
+}
+
+@layer applications {
+
+}

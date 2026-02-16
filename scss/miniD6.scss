@@ -8,19 +8,22 @@
 @import 'utils/variables';
 
 /* Global styles */
-@import 'global/window';
+@import 'global/layers';
 @import 'global/grid';
 @import 'global/flex';
+@import 'global/body';
 
 /* Import sheets */
 @import 'sheets/actor/sheet-explorer';
 @import 'sheets/journal-sheet';
+@import 'sheets/sheets';
 
 /* Styles limited to miniD6 sheets */
-.miniD6 {
+.md6 {
   @import 'components/content-link';
   @import 'components/forms';
+  @import 'components/divs';
+  @import 'components/images';
   @import 'components/resource';
   @import 'components/items';
-  @import 'components/effects';
 }

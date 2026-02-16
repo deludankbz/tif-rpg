@@ -1,15 +1,32 @@
-$c-white: #fff;
-$c-black: #000;
+$md6-white: #fff;
 
-$c-dark: #191813;
-$c-faint: #c9c7b8;
-$c-beige: #b5b3a4;
-$c-tan: #444;
+// Black shades
+$md6-black: #000000;
+$md6-black-80: color(from $md6-black srgb r g b / 0.8);
+$md6-black-60: color(from $md6-black srgb r g b / 0.6);
+$md6-black-30: color(from $md6-black srgb r g b / 0.3);
+$md6-black-10: color(from $md6-black srgb r g b / 0.1);
 
-$c-green: #43877B;
-$c-faint-green: rgba(67, 135, 123, 0.2);
-$c-honeydew: Honeydew;
-$c-dark-green: #012C2C;
+// Beige/Cream
+$md6-cream: rgb(208, 199, 182);
+$md6-cream-60: rgba(208, 199, 182, 0.6);
+$md6-cream-30: rgba(208, 199, 182, 0.3);
+$md6-cream-10: rgba(208, 199, 182, 0.1);
 
-$c-grey-blue: #365760;
-$c-dark-grey-blue: #143E4A;
+// Blue
+$md6-light-blue-acc: rgba(112, 169, 222);
+
+$md6-light-blue: rgb(107, 124, 136);
+
+// Dark Blue
+$md6-dark-blue:     rgba(36, 50, 57);
+$md6-dark-blue-80:  rgba(36, 50, 57, 0.8);
+$md6-dark-blue-60:  rgba(36, 50, 57, 0.6);
+$md6-dark-blue-50:  rgba(36, 50, 57, 0.5);
+$md6-dark-blue-30:  rgba(36, 50, 57, 0.3);
+$md6-dark-blue-10:  rgba(36, 50, 57, 0.1);
+
+// Red
+$md6-red-acc: rgb(244, 162, 80);
+
+$md6-red: rgb(217, 59, 19);
