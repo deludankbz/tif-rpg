@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.RPT_MINID6 }}
+          # token: ${{ secrets.RPT_MINID6 }}
           release-type: node
           package-name: minid6
