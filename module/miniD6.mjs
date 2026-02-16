@@ -31,6 +31,8 @@ globalThis.miniD6 = {
 };
 
 Hooks.once('init', function () {
+  console.error('WHAT');
+  
   // Add custom constants for configuration.
   CONFIG.MINID6 = MINID6;
 
