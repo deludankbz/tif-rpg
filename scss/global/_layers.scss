@@ -2,6 +2,11 @@
 /* Override foundry's default layers        */
 /* ---------------------------------------- */
 
+:root {
+  /* explorer sheet inventory */
+  --md6-item-frame-padding: 16px;
+  --md6-light-item-frame: url(../assets/ui/sheets/actors/item-bg.png);
+}
 
 @layer elements.typography {
   /* ---------------------------------------- */
@@ -21,6 +26,13 @@
       font-family: $font-body;
       color: var(--color-text-primary);
     }
+  }
+
+  /* ---------------------------------------- */
+  /*  Dividers                                */
+  /* ---------------------------------------- */
+  hr {
+    background-image: linear-gradient(90deg, $md6-cream 50%, transparent 100%);
   }
 }
 

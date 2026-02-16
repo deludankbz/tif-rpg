@@ -8,6 +8,7 @@ import * as sheets from "./sheets/_module.mjs";       // Import sheet classes.
 import { MINID6 } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
+import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 
 const collections = foundry.documents.collections;
 const foundrySheets = foundry.appv1.sheets;
@@ -78,6 +79,8 @@ Hooks.once('init', function () {
     makeDefault: true,
     label: 'MINID6.SheetLabels.Item',
   });
+
+  preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */

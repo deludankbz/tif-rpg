@@ -2,11 +2,12 @@
   
   <div class="inventory">
     <h3>Inventory</h3>
-    <div class="grid-items grid-2col scrollable" style="height: 80%">
+    <hr>
+    <div class="grid grid-items scrollable" style="height: 80%" data-tooltip='{{item.name}}' data-action="onSelectItem">
 
       {{#each equipments as |item id|}}
-      <div class="item draggable" data-item-id="{{item._id}}" data-document-class="Item">
-        <img src='{{item.img}}' data-tooltip='{{item.name}}' width='46' height='46' />
+      <div class="item draggable" data-item-id="{{item._id}}" data-item-uuid="{{item.uuid}}" data-document-class="Item" data-action="onSelectItem">
+        <img src='{{item.img}}' />
       </div>
       {{/each}}
 
@@ -14,8 +15,8 @@
     
   </div>
   
-  <div class="item-prop">
-    <h2>Test</h2>
+  <div class="item-properties md6-frame dark bl">
+    {{> systems/miniD6/templates/actor/parts/explorer/partials/inv-item-properties.hbs selection="inactive"}}
   </div>
   
   

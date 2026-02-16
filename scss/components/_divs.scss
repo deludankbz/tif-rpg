@@ -12,10 +12,21 @@
 
   // border-top
   &.bt {
-    border-top: 2px $c solid;
     border-left: 0px;
+    border-top: 2px $c solid;
     border-right: 0px;
     border-bottom: 0px;
+  }
+
+  &.bl {
+    border-left: 2px $c solid;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+  }
+
+  &.nbrd {
+    border: none
   }
 
   &.light { @extend .screen-bm; }

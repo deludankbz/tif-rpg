@@ -8,12 +8,6 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
 export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
-  /** @override */
-  static defineSchema() {
-    return {
-      test: new fields.StringField({blank: false})
-    };
-  }
   
   /** @override */
   static DEFAULT_OPTIONS = {
@@ -24,6 +18,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     },
     actions: {
       onEditImage: this._onEditImage,
+      onSelectItem: this._onSelectItem,
       viewDoc: this._viewDoc,
       createDoc: this._createDoc,
       deleteDoc: this._deleteDoc,
@@ -117,20 +112,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
-      case 'biography':
-        /*
-      context.enrichedNotes = await TextEditor.enrichHTML(
-        this.actor.system.biography,
-        {
-          // Whether to show secret blocks in the finished html
-          secrets: this.document.isOwner,
-          // Data to fill in for inline rolls
-          rollData: this.actor.getRollData(),
-          // Relative UUID resolution
-          relativeTo: this.actor,
-        }
-      );
-      */
+      case 'inventory':
       break;
     }
     
@@ -256,30 +238,30 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     // Foundry comes with a large number of utility classes, e.g. SearchFilter
     // That you may want to implement yourself.
   }
-
-
+  
+  
   /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
-
+  
   /**
-   * Actions performed after a first render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
-   * @protected
-   */
+  * Actions performed after a first render of the Application.
+  * @param {ApplicationRenderContext} context      Prepared context data
+  * @param {RenderOptions} options                 Provided render options
+  * @protected
+  */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-
+    
     this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]");
     //, { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true }
   }
-
-    /**
-   * Get context menu entries for item buttons.
-   * @returns {ContextMenuEntry[]}
-   * @protected
-   */
+  
+  /**
+  * Get context menu entries for item buttons.
+  * @returns {ContextMenuEntry[]}
+  * @protected
+  */
   _getItemButtonContextOptions() {
     // name is auto-localized
     return [
@@ -350,6 +332,71 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
       left: this.position.left + 10,
     });
     return fp.browse();
+  }
+  
+  
+  /**
+  * Handle item select in inventory grid.
+  *
+  * @this MiniD6ActorSheet
+  * @param {PointerEvent} event   The originating click event
+  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+  * @protected
+  */
+  static async _onSelectItem(event, target) {
+    let $item = $(target);
+    let $activeTab = $(this.document.sheet.form).find('section.tab.active');
+    let $itemGrid = $activeTab.find('div.item');
+    let $propertyTab = $activeTab.find('div.item-properties');
+
+    const itemDocument = fromUuidSync(target.dataset.itemUuid);
+    
+    function sanitizeSelection() {
+      $itemGrid.each(function() {
+        let $elem = $(this);
+        if ($elem.hasClass('selected')) $elem.removeClass('selected');
+      });
+    }
+    
+    async function toggleProps(isActive, item = null) {
+      $propertyTab.empty();
+      
+      const templateData = isActive 
+        ? {
+            selection: 'active',
+            item: item
+          }
+        : { selection: 'inactive' };
+      
+      const html = await renderTemplate(
+        'systems/miniD6/templates/actor/parts/explorer/partials/inv-item-properties.hbs',
+        templateData
+      );
+
+      if (isActive) $propertyTab.addClass('active');
+      else $propertyTab.removeClass('active');
+
+      $propertyTab.append(html);
+    }
+    
+    // Remove selection
+    if ($item.hasClass('grid-items')) { 
+      sanitizeSelection();
+      await toggleProps(false);
+      return;
+    }
+    
+    // Toggle
+    if ($item.hasClass('selected')) {
+      await toggleProps(false);
+      $item.removeClass('selected');
+    }
+    else {
+      sanitizeSelection();
+      await toggleProps(true, itemDocument);;
+      $(target).addClass('selected');
+    }
+    
   }
   
   /**
