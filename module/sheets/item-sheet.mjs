@@ -16,7 +16,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['miniD6', 'item'],
+    classes: ['md6', 'item'],
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,

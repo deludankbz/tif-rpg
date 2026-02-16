@@ -1,0 +1,13 @@
+{{! Sheet Header }}
+<header class="md6-frame light bt content-header">
+  <div class="flexrow">
+
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="onEditImage" data-tooltip="{{actor.name}}"/>
+
+    <div class="info-info flexcol">
+      <input class="md6-input dark" name="name" type="text"  value="{{actor.name}}" placeholder="Name"/>
+      <!-- {{formGroup systemFields.age value=system.age type="number" classes="flexrow md6-input dark" label=(localize "MINID6.Actor.Explorer.FIELDS.age.label") }} -->
+    </div>
+ 
+  </div>
+</header>

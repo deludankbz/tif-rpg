@@ -1,0 +1,22 @@
+<section class="tab {{tab.id}} {{tab.cssClass}} flexrow" data-group="primary" data-tab="{{tab.id}}" >
+  
+  <div class="inventory">
+    <h3>Inventory</h3>
+    <div class="grid-items grid-2col scrollable" style="height: 80%">
+
+      {{#each equipments as |item id|}}
+      <div class="item draggable" data-item-id="{{item._id}}" data-document-class="Item">
+        <img src='{{item.img}}' data-tooltip='{{item.name}}' width='46' height='46' />
+      </div>
+      {{/each}}
+
+    </div>
+    
+  </div>
+  
+  <div class="item-prop">
+    <h2>Test</h2>
+  </div>
+  
+  
+</section>

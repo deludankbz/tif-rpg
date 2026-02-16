@@ -17,10 +17,10 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['miniD6', 'actor'],
+    classes: ['md6', 'actor'],
     position: {
       width: 600,
-      height: 600,
+      height: 900,
     },
     actions: {
       onEditImage: this._onEditImage,
@@ -40,22 +40,22 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/miniD6/templates/actor/header.hbs',
+      template: 'systems/miniD6/templates/actor/parts/explorer/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
-    stats: {
-      template: 'systems/miniD6/templates/actor/stats.hbs',
+    specialability: {
+      template: 'systems/miniD6/templates/actor/parts/explorer/specials.hbs',
       scrollable: [""],
     },
-    notes: {
-      template: 'systems/miniD6/templates/actor/notes.hbs',
+    biography: {
+      template: 'systems/miniD6/templates/actor/parts/explorer/biography.hbs',
       scrollable: [""],
     },
     inventory: {
-      template: 'systems/miniD6/templates/actor/inventory.hbs',
+      template: 'systems/miniD6/templates/actor/parts/explorer/inventory.hbs',
       scrollable: [""],
     },
   };
@@ -74,7 +74,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'explorer':
-      options.parts.push('header', 'tabs', 'stats', 'notes', 'inventory');
+      options.parts.push('header', 'tabs', 'inventory', 'specialability', 'biography');
       break;
       case 'npc':
       options.parts.push('simple');
@@ -117,9 +117,10 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
-      case 'notes':
+      case 'biography':
+        /*
       context.enrichedNotes = await TextEditor.enrichHTML(
-        this.actor.system.notes,
+        this.actor.system.biography,
         {
           // Whether to show secret blocks in the finished html
           secrets: this.document.isOwner,
@@ -129,6 +130,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
           relativeTo: this.actor,
         }
       );
+      */
       break;
     }
     
@@ -148,7 +150,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     
     // Default tab for first time it's rendered this session
     if (!this.tabGroups[tabGroup])
-      this.tabGroups[tabGroup] = 'stats';
+      this.tabGroups[tabGroup] = 'special-ability';
     
     return parts.reduce((tabs, partId) => {
       const tab = {
@@ -158,6 +160,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
         id: '',
         // FontAwesome Icon, if you so choose
         icon: '',
+        tooltip: 'MINID6.Actor.Tabs.Tooltips.',
         // Run through localization
         label: 'MINID6.Actor.Tabs.',
       };
@@ -168,26 +171,27 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
         case 'biography':
         tab.id = 'biography';
         tab.label += 'Biography';
+        tab.tooltip += 'Biography';
         break;
         case 'features':
         tab.id = 'features';
         tab.label += 'Features';
+        tab.tooltip += 'Features';
         break;
         case 'gear':
         tab.id = 'gear';
         tab.label += 'Gear';
+        tab.tooltip += 'Gear';
         break;
-        case 'stats':
-        tab.id = 'stats';
-        tab.label += 'Stats';
-        break;
-        case 'notes':
-        tab.id = 'notes';
-        tab.label += 'Notes';
+        case 'specialability':
+        tab.id = 'special-ability';
+        tab.label += 'SA';
+        tab.tooltip += 'SA';
         break;
         case 'inventory':
         tab.id = 'inventory';
         tab.label += 'Inventory';
+        tab.tooltip += 'Inventory';
         break;
         default:
         let config = partId;
@@ -251,6 +255,67 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     // You may want to add other special handling here
     // Foundry comes with a large number of utility classes, e.g. SearchFilter
     // That you may want to implement yourself.
+  }
+
+
+  /* -------------------------------------------------- */
+  /*   Application Life-Cycle Events                    */
+  /* -------------------------------------------------- */
+
+  /**
+   * Actions performed after a first render of the Application.
+   * @param {ApplicationRenderContext} context      Prepared context data
+   * @param {RenderOptions} options                 Provided render options
+   * @protected
+   */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]");
+    //, { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true }
+  }
+
+    /**
+   * Get context menu entries for item buttons.
+   * @returns {ContextMenuEntry[]}
+   * @protected
+   */
+  _getItemButtonContextOptions() {
+    // name is auto-localized
+    return [
+      {
+        name: "Edit",
+        icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
+        condition: (target) => {
+          let item = this._getEmbeddedDocument(target);
+          return true;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.sheet.render({ force: true });
+        },
+      },
+      {
+        name: "Delete",
+        icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
+        condition: (target) => {
+          let item = this._getEmbeddedDocument(target);
+          return this.actor.isOwner;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.deleteDialog();
+        },
+      },
+    ];
   }
   
   /**************
@@ -400,7 +465,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
   */
   _getEmbeddedDocument(target) {
-    const docRow = target.closest('li[data-document-class]');
+    const docRow = target.closest('div[data-document-class]');
     if (docRow.dataset.documentClass === 'Item') {
       return this.actor.items.get(docRow.dataset.itemId);
     } else if (docRow.dataset.documentClass === 'ActiveEffect') {
