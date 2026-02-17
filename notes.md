@@ -1,5 +1,12 @@
 # TODO
-- Add scroll transition inside journal sheets for pages with image headers
+## Actor and actor sheet
+- Config the document for npc, creature, and explorer (img etc...)
+- set prototoken for correct image
+- Add effect info on effects tab on _source vs system
+
+## Item and Item sheet
+- Config the document for item types (img etc...)
+
 
 ## Sass
 Use new imports
