@@ -6,9 +6,12 @@
       {{log this}}
 
       {{#each effects as |item id|}}
-      <div class="item draggable flexrow flexshrink" data-item-id="{{item._id}}" data-item-uuid="{{item.uuid}}" data-document-class="Item" data-action="onSelectItem">
-        <img src='{{item.img}}' width="64" height="64" />
-        <label>{{item.name}}</label>
+      <div class="item draggable flexrow" data-item-id="{{item._id}}" data-item-uuid="{{item.uuid}}" data-document-class="Item" data-action="onSelectItem">
+        <img src='{{item.img}}'/>
+        <div class="flexcol details">
+          <label>{{item.name}}</label>
+          {{{item.system.description}}}
+        </div>
       </div>
       {{/each}}
 

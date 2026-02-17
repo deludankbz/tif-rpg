@@ -3,7 +3,7 @@
 body .application,
 body.theme-dark .application {
 
-  border-radius: 8px;
+  border-radius: 12px;
 
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -20,7 +20,7 @@ body.theme-dark .application {
   --color-text-primary: #{$md6-cream};
   --color-text-secondary: #{$md6-cream};
   --color-shadow-primary: #{$md6-cream};
-  --color-border: #{$md6-cream-60};
+  --color-border: #{$md6-cream-30};
   --color-header-background: none;
   // --color-form-label: #{$md6-cream};
   // --color-form-hint: #{$md6-cream};
@@ -36,6 +36,11 @@ body.theme-dark .application {
   select {
     --input-background-color: #{$md6-black-30};
     --input-text-color: #{$md6-cream};
+    --input-placeholder-color: #{$md6-cream-30};
+        --input-focus-outline-color: #{$md6-cream-30};
+    option {
+      background-color: $md6-black;
+    }
   }
 
   .window-header {
@@ -79,5 +84,28 @@ body.theme-dark .application {
         // border-style: solid;
       }
     }
+  }
+
+  a.button,
+  button {
+    outline: none !important;
+    background: #{$md6-black-30};
+    border: none;
+  }
+
+  a.button:disabled,
+  button:disabled {
+    cursor: inherit;
+  }
+  a.button:hover,
+  button:hover {
+    background: #{$md6-cream};
+    color: #{$md6-black};
+    border: none;
+  }
+  a.button:focus,
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 4px #{$md6-cream};
   }
 }

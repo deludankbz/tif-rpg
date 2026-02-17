@@ -1,14 +1,18 @@
 {{! Sheet Header }}
-<header class="md6-frame light bt content-header">
-  <div class="flexrow">
+<header class="md6-frame light bt content-header flexrow">
+  <img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="onEditImage" data-tooltip="{{actor.name}}"/>
+  
+  <div class="info-info flexcol">
+    <input class="md6-input dark" name="name" type="text"  value="{{actor.name}}" placeholder="Name"/>
+    {{!-- Custom SVG (dynamic-icons) --}}
+    {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
+    type="heart-with-number" 
+    value=system._source.vigor
+    color1="var(--md6-red)" 
+    color2="var(--md6-cream)" 
+    size="58"
+  }}
+  <label for=""></label>
+</div>
 
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="onEditImage" data-tooltip="{{actor.name}}"/>
-
-    <div class="info-info flexcol">
-      <input class="md6-input dark" name="name" type="text"  value="{{actor.name}}" placeholder="Name"/>
-      <a>{{system.vigor}}</a>
-      <!-- {{formGroup systemFields.age value=system.age type="number" classes="flexrow md6-input dark" label=(localize "MINID6.Actor.Explorer.FIELDS.age.label") }} -->
-    </div>
- 
-  </div>
 </header>
