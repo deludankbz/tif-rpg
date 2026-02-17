@@ -17,14 +17,14 @@
         "Biography": "Biography",
         "Features": "Features",
         "Gear": "Gear",
-        "SA": "Special Abilities",
+        "Effects": "Effects",
         "Inventory": "Inventory",
         
         "Tooltips": {
           "Biography": "Biography",
           "Features": "Features",
           "Gear": "Gear",
-          "SA": "Special Abilities",
+          "Effects": "Effects",
           "Inventory": "Inventory"
         }
       },
@@ -94,7 +94,7 @@
     "Item": {
       "equipment": "Equipment",
       "weapon": "Weapon",
-      "skill": "Skill"
+      "effect": "Effect"
     }
   }
 }

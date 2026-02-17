@@ -9,7 +9,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/miniD6/templates/actor/parts/explorer/biography.hbs',
     'systems/miniD6/templates/actor/parts/explorer/header.hbs',
     'systems/miniD6/templates/actor/parts/explorer/inventory.hbs',
-    'systems/miniD6/templates/actor/parts/explorer/specials.hbs',
+    'systems/miniD6/templates/actor/parts/explorer/effects.hbs',
     'systems/miniD6/templates/actor/parts/explorer/partials/inv-item-properties.hbs',
     // Item partials
     'systems/miniD6/templates/item/parts/item-effects.hbs',

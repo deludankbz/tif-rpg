@@ -65,11 +65,11 @@
     }
     
     // effects icons
-    a[data-tab="special-ability"]:not(.active)::after {
+    a[data-tab="effects"]:not(.active)::after {
       background-image: url(../assets/ui/sheets/actors/nav-tab-icons/sa-inactive.svg);
     }
     
-    a[data-tab="special-ability"].active::after {
+    a[data-tab="effects"].active::after {
       background-image: url(../assets/ui/sheets/actors/nav-tab-icons/sa.svg);
     }
     

@@ -41,8 +41,8 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
-    specialability: {
-      template: 'systems/miniD6/templates/actor/parts/explorer/specials.hbs',
+    effects: {
+      template: 'systems/miniD6/templates/actor/parts/explorer/effects.hbs',
       scrollable: [""],
     },
     biography: {
@@ -69,13 +69,13 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'explorer':
-      options.parts.push('header', 'tabs', 'inventory', 'specialability', 'biography');
+      options.parts.push('header', 'tabs', 'inventory', 'effects', 'biography');
       break;
       case 'npc':
-      options.parts.push('simple');
+      options.parts.push('header');
       break;
       case 'creature':
-      options.parts.push('creature');
+      options.parts.push('header');
       break;
     }
   }
@@ -165,10 +165,10 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
         tab.label += 'Gear';
         tab.tooltip += 'Gear';
         break;
-        case 'specialability':
-        tab.id = 'special-ability';
-        tab.label += 'SA';
-        tab.tooltip += 'SA';
+        case 'effects':
+        tab.id = 'effects';
+        tab.label += 'Effects';
+        tab.tooltip += 'Effects';
         break;
         case 'inventory':
         tab.id = 'inventory';
@@ -198,7 +198,10 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   _prepareItems(context) {
     const equipments = [];
     const weapons = [];
-    const skills = [];
+    const effects = [];
+
+    console.log(this.document.items);
+    
     
     for (let i of this.document.items) {
       if (i.type === 'weapon') {
@@ -209,8 +212,8 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
         equipments.push(i);
         continue;
       }
-      if (i.type === 'skill') {
-        skills.push(i);
+      if (i.type === 'effect') {
+        effects.push(i);
         continue;
       }
     }
@@ -218,7 +221,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     // Sort then assign
     context.equipments = equipments.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.weapons = weapons.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.skills = weapons.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.effects = effects.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     
     return context;
   }

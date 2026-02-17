@@ -46,12 +46,17 @@
   section.tab.inventory {
     align-content: start;
     align-items: start;
+
+   display: flexbox;
+    flex: 1 1 auto;
+    flex-direction: row;
     
     .inventory, .item-properties {
       height: 80%;
     }
     
     .inventory {
+      width: 20%;
       padding: 16px 24px;
       border-image-slice: 32 fill;
       border-image-width: 20px;

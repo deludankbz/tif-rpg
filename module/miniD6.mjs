@@ -57,8 +57,9 @@ Hooks.once('init', function () {
   };
   CONFIG.Item.documentClass = MiniD6Item;
   CONFIG.Item.dataModels = {
+    effect: models.MiniD6Effect,
     equipment: models.MiniD6Gear,
-    weapon: models.MiniD6Feature,
+    weapon: models.MiniD6ItemBase,
   };
 
   // Active Effects are never copied to the Actor,
@@ -69,13 +70,14 @@ Hooks.once('init', function () {
   // Register sheet application classes
   collections.Actors.unregisterSheet('core', foundrySheets.ActorSheet);
   collections.Actors.registerSheet('miniD6', sheets.MiniD6ActorExplorerSheet, {
-    types: ["explorer"],
+    types: ['explorer', 'npc', 'creature'],
     makeDefault: true,
     label: 'MINID6.SheetLabels.Actor',
   });
 
   collections.Items.unregisterSheet('core', foundrySheets.ItemSheet);
   collections.Items.registerSheet('miniD6', sheets.MiniD6ItemSheet, {
+    types: ['equipment', 'effect', 'weapon'],
     makeDefault: true,
     label: 'MINID6.SheetLabels.Item',
   });
