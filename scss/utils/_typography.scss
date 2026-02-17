@@ -1,15 +1,29 @@
 /* Set type-face */
-// Inter
+// Roboto
 @font-face {
-  font-family: Inter;
+  font-family: Roboto;
   font-weight: 100 900;
-  src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf')
+  src: url('../fonts/Roboto/Roboto-Variable.ttf')
 }
 
 @font-face {
-  font-family: Inter;
+  font-family: Roboto;
   font-weight: 100 900;
-  src: url('../fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf');
+  src: url('../fonts/Roboto/Roboto-Italic-Variable.ttf');
+  font-style: italic;
+}
+
+// Crimsom Pro
+@font-face {
+  font-family: Crimsom Pro;
+  font-weight: 100 900;
+  src: url('../fonts/Crimson_Pro/CrimsonPro-Variable.ttf')
+}
+
+@font-face {
+  font-family: Crimsom Pro;
+  font-weight: 100 900;
+  src: url('../fonts/Crimson_Pro/CrimsonPro-Italic-Variable.ttf');
   font-style: italic;
 }
 
@@ -28,6 +42,8 @@
 }
 
 
-$font-body: Inter, sans-serif;
-$font-header: Gasoek One, sans-serif;
-$font-cursive: Jua, sans-serif;
+$font-body: Roboto, sans-serif;
+$font-serif: Crimsom Pro, sans-serif;
+// Will be changed
+$font-header: Roboto, sans-serif;
+$font-cursive: Roboto, sans-serif;

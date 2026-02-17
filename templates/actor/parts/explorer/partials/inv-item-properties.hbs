@@ -1,0 +1,15 @@
+  {{#if (eq selection "active")}}
+  <div class="prop-header">
+    <img src="{{item.img}}" alt="">
+    <h3>{{item.name}}</h3>
+  </div>
+
+  <div class="md6-frame light nbrd">
+    {{{item.system.description}}}
+  </div>
+
+  {{/if}}
+
+  {{#if (eq selection "inactive")}}
+    <h3>...</h3>
+  {{/if}}

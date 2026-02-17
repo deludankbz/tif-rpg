@@ -1,6 +1,3 @@
-// Add custom fonts by visiting and search https://fonts.google.com
-@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jua&display=swap');
-
 // Import utilities.
 @import 'utils/typography';
 @import 'utils/colors';
@@ -8,19 +5,22 @@
 @import 'utils/variables';
 
 /* Global styles */
-@import 'global/window';
+@import 'global/layers';
 @import 'global/grid';
 @import 'global/flex';
+@import 'global/body';
 
 /* Import sheets */
 @import 'sheets/actor/sheet-explorer';
 @import 'sheets/journal-sheet';
+@import 'sheets/sheets';
 
 /* Styles limited to miniD6 sheets */
-.miniD6 {
+.md6 {
   @import 'components/content-link';
   @import 'components/forms';
+  @import 'components/divs';
+  @import 'components/images';
   @import 'components/resource';
   @import 'components/items';
-  @import 'components/effects';
 }
