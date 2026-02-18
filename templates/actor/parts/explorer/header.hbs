@@ -14,8 +14,9 @@
       color2="var(--md6-cream)" 
       size="52"
       }}
-      {{#if system.playMode}}
+
         <div class="sheet-edit-mode health-control flexcol" stlye="">
+                {{#if system.playMode}}
         <a data-action="stepSystemAttr" data-attr="vigor" data-step="+ 1">
           {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
           type="plus" 
@@ -32,9 +33,10 @@
           size="16"
           }}
         </a>
+             {{/if}}
         </div>
 
-      {{/if}}
+ 
     </div>
 
 

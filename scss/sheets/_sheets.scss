@@ -11,6 +11,10 @@ body.theme-dark .application {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 
+  header {
+    border-bottom-width: 2px;
+  }
+
   button[type="button toggle-sheet-mode"].fa-wand-magic-sparkles {
     color: $md6-red-acc !important;
   }

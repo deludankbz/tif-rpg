@@ -9,7 +9,7 @@
 .sheet.md6.explorer {
   
   header.content-header {
-    @extend %md6-frame; @extend .light; @extend .bt;
+    @extend %md6-frame; @extend .light; @extend .nbrd;
     
     padding: var(--md6-effect-item-gap);
     gap: var(--md6-effect-item-gap);
