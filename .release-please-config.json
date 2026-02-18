@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "minid6"
+      "package-name": "miniD6"
     }
   }
 }
