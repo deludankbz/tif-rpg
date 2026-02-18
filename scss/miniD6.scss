@@ -11,9 +11,17 @@
 @import 'global/body';
 
 /* Import sheets */
-@import 'sheets/actor/sheet-explorer';
-@import 'sheets/journal-sheet';
+
+// Global Sheets
 @import 'sheets/sheets';
+
+// Actor Sheets
+@import 'sheets/actor/sheet-creature';
+@import 'sheets/actor/sheet-explorer';
+
+// Journal Sheet
+@import 'sheets/journal-sheet';
+
 
 /* Styles limited to miniD6 sheets */
 .md6 {

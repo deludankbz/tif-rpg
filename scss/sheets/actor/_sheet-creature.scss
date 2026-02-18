@@ -1,0 +1,40 @@
+/* ################# */
+/* Creature Sheet    */
+/* ################# */
+
+.sheet.md6.creature {
+  
+  header.content-header {
+    @extend %md6-frame; @extend .light; @extend .bt;
+    
+    padding: var(--md6-effect-item-gap);
+    gap: var(--md6-effect-item-gap);
+    align-items: start;
+    
+    .profile-img {
+      flex: 0 0 72px;
+      width: 72px;
+    }
+  }
+  
+  /* ----------------- */
+  /* Navigation tabs   */
+  /* ----------------- */
+  
+  nav.sheet-tabs.tabs {
+    @extend %md6-frame;
+    @extend .dark;
+    
+    margin: 0;
+    padding: 6px 16px 0px;
+  }
+  
+  nav.sheet-tabs.tabs {
+    @extend %nav-tab-icons;
+  }
+  
+  section.tab.active {
+    height: 100%;
+    max-height: 100%;
+  }
+}
