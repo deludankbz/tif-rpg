@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.1](https://github.com/deludankbz/miniD6/compare/v1.0.0...v1.0.1) (2026-02-18)
+
+
+### Bug Fixes
+
+* test rr ([9e4edab](https://github.com/deludankbz/miniD6/commit/9e4edabb1a2c3505f4da0683f7a79c95e6e35427))
+
 ## 1.0.0 (2026-02-18)
 
 
