@@ -16,7 +16,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           release-type: node
-          package-name: minid6
+          package-name: miniD6
 
   build-and-release:
     runs-on: ubuntu-latest
