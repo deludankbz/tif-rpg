@@ -45,6 +45,11 @@ $border: $border-size solid $md6-cream-30;
 
 // background
 
+%blur-bg {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
 /* 
  * Change bg's blend mode and color
  */

@@ -6,6 +6,20 @@ body {
   --font-serif: #{$font-cursive};
 }
 
+#context-menu {
+  // @extend %blur-bg;
+  --background-color: #{$md6-black};
+  --border-color: #{$md6-cream-30};
+  --text-color: #{$md6-cream} !important;
+  --hover-text-color: var(--text-color);
+  --hover-entry-border: transparent;
+  --hover-entry-background: #{$md6-cream-10};
+}
+
+#sidebar-content .sidebar-tab:not(#chat) {
+  @extend %blur-bg;
+}
+
 .window-app {
   font-family: $font-header;
 }
