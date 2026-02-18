@@ -51,7 +51,7 @@
   "version": "1.0.0",
   "compatibility": {
     "minimum": 13,
-    "verified": "13"
+    "verified": "13.351"
   },
   "esmodules": ["module/miniD6.mjs"],
   "styles": ["css/miniD6.css"],
