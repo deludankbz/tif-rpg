@@ -49,8 +49,12 @@
       "NPC": {
         "FIELDS": {
           "cr": {"label": "CR"}
-        },
-        "xp": {"label": "XP"}
+        }
+      },
+      "CREATURE": {
+        "FIELDS": {
+          "health": {"label": "Health"}
+        }
       }
     },
     "Item": {
