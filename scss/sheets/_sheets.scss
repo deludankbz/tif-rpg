@@ -4,6 +4,7 @@ body .application,
 body.theme-dark .application {
 
   border-radius: 12px;
+  border-width: 2px;
 
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -22,14 +23,37 @@ body.theme-dark .application {
   --color-shadow-primary: #{$md6-cream};
   --color-border: #{$md6-cream-30};
   --color-header-background: none;
-  // --color-form-label: #{$md6-cream};
-  // --color-form-hint: #{$md6-cream};
+  --color-form-label: #{$md6-cream};
+  --color-form-hint: #{$md6-cream-60};
   // --color-form-label-hover: #{$c-gold};
   // --color-form-hint-hover: #{$c-cream};
-  // --color-fieldset-border: #{$c-brown};
+  --color-fieldset-border: #{$md6-cream-30};
+
+  /* ================== */
+  /* Button             */
+  /* ================== */
 
   button {
     --button-text-color: #{$md6-cream};
+  }
+
+  /* ================== */
+  /* Inputs             */
+  /* ================== */
+
+  select,
+  button,
+  input[type=text],
+  input[type=number]
+  {
+    border: 1px solid #{$md6-cream-30};
+  }
+
+  input[type=range] {
+    --range-track-color: var(--md6-cream-30);
+    --range-track-border-color: var(--input-border-color);
+    --range-thumb-background-color: rgba(11, 10, 19, 0.9);
+    --range-thumb-border-color: var(--color-warm-1);
   }
 
   input,
@@ -37,7 +61,8 @@ body.theme-dark .application {
     --input-background-color: #{$md6-black-30};
     --input-text-color: #{$md6-cream};
     --input-placeholder-color: #{$md6-cream-30};
-        --input-focus-outline-color: #{$md6-cream-30};
+    --input-focus-outline-color: #{$md6-cream-30};
+
     option {
       background-color: $md6-black;
     }
@@ -47,9 +72,13 @@ body.theme-dark .application {
     border-bottom: 0;
   }
 
+  nav.sheet-tabs.tabs {
+    @extend %md6-frame; @extend .light;
+  }
+
   .scrollable {
     padding-right: 16px;
-    scrollbar-width: auto;
+    scrollbar-width: thin;
     scrollbar-color: $md6-cream transparent;
   }
 
@@ -85,6 +114,8 @@ body.theme-dark .application {
       }
     }
   }
+
+
 
   a.button,
   button {

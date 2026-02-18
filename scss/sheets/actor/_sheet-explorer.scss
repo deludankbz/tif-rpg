@@ -6,6 +6,8 @@
 .sheet.md6.explorer {
   
   header.content-header {
+    @extend %md6-frame; @extend .light; @extend .bt;
+    
     padding: var(--md6-effect-item-gap);
     gap: var(--md6-effect-item-gap);
     align-items: start;
@@ -21,7 +23,7 @@
   /* ----------------- */
   
   nav.sheet-tabs.tabs {
-    @extend .md6-frame;
+    @extend %md6-frame;
     @extend .dark;
     
     margin: 0;
@@ -125,7 +127,7 @@
     padding: var(--md6-effect-item-gap);
 
     .item {
-      @extend .md6-frame; @extend .light; @extend .nbrd;
+      @extend %md6-frame; @extend .light; @extend .nbrd;
 
       padding: calc(var(--md6-effect-item-gap) / 2);
       gap: var(--md6-effect-item-gap);

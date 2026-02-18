@@ -1,16 +1,16 @@
 {{! Sheet Header }}
-<header class="md6-frame light bt content-header flexrow">
+<header class="content-header flexrow">
   <img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="onEditImage" data-tooltip="{{actor.name}}"/>
   
-  <div class="info-info flexcol">
-    <input class="md6-input dark" name="name" type="text"  value="{{actor.name}}" placeholder="Name"/>
+  <div class="info flexcol">
+    <input name="name" type="text"  value="{{actor.name}}" placeholder="Name"/>
     {{!-- Custom SVG (dynamic-icons) --}}
     {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
     type="heart-with-number" 
     value=system._source.vigor
     color1="var(--md6-red)" 
     color2="var(--md6-cream)" 
-    size="58"
+    size="52"
   }}
   <label for=""></label>
 </div>

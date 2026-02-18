@@ -49,10 +49,26 @@
 }
 
 // Nav Bar Custom tab with icons
+%tab-icon {
+  content: "";
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
 %nav-tab-icons {
     a {
       span { display: none; }
-      &::after { @extend .tab-icon; }
+      &::after { 
+        @extend %tab-icon;
+        $icon-size: var(--md6-icon-md);
+        width: $icon-size !important;
+        height: $icon-size !important;
+      }
+      &::after {
+        height: 16px;
+      }
     }
     
     // inventory icons

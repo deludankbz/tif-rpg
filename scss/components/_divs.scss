@@ -3,8 +3,8 @@
 // DIVS
 // ------------------
 
-
-.md6-frame {
+.md6-frame,
+%md6-frame {
   $c: $md6-cream-30;
   border: 2px $c solid;
   border-left: 0px;
