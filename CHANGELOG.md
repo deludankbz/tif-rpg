@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.2](https://github.com/deludankbz/miniD6/compare/v1.0.1...v1.0.2) (2026-02-18)
+
+
+### Bug Fixes
+
+* Remove unecessary files only used in development ([97764b8](https://github.com/deludankbz/miniD6/commit/97764b889e80cc500c135824b62635b87c7cb1b6))
+
 ## [1.0.1](https://github.com/deludankbz/miniD6/compare/v1.0.0...v1.0.1) (2026-02-18)
 
 
