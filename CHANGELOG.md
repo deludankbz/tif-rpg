@@ -16,7 +16,6 @@
 
 ## 1.0.0 (2026-02-18)
 
-
 ### ⚠ BREAKING CHANGES
 
 * Changes old names to miniD6 and its case variants
@@ -43,7 +42,3 @@
 
 * **bug:** Creature sheet not being renderable ([6ba87d7](https://github.com/deludankbz/miniD6/commit/6ba87d72d740aa3e9a7f69d405d937eeecc6309c))
 * Update sass to drop `[@imports](https://github.com/imports)` and use `[@use](https://github.com/use)` & `[@foward](https://github.com/foward)` ([0f26584](https://github.com/deludankbz/miniD6/commit/0f2658440dbea17b52d8a87006aa6145d33c48b6))
-
-## 1.2.0
-
-- Add support for Foundry v10
