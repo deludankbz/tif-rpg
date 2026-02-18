@@ -40,7 +40,6 @@ jobs:
           zip -r release.zip . \
             --exclude "Makefile" \
             --exclude "notes/*" \
-            --exclude "package.json" \
             --exclude ".github/*" \
             --exclude "scss/*"
 
