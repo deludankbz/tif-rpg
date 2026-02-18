@@ -8,7 +8,6 @@
       version="1.1"
       id="svg1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:svg="http://www.w3.org/2000/svg">
    <g id="heart">
       <path
          id="Vector"
@@ -31,5 +30,22 @@
             id="tspan1"
             style="stroke:{{color1}};stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers">{{value}}</tspan></text>
    </g>
+   </svg>
+{{/if}}
+
+{{!-- Sub icon --}}
+{{#if (eq type "sub")}}
+   <svg 
+   width="{{size}}" height="{{size}}" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M404 216.009V290.362H108V216.009H404Z" fill="{{color1}}"/>
+   </svg>
+{{/if}}
+
+
+{{!-- Plus icon --}}
+{{#if (eq type "plus")}}
+   <svg 
+   width="{{size}}" height="{{size}}" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M404 216.009V290.362H108V216.009H404ZM296.633 99V413H215.663V99H296.633Z" fill="{{color1}}"/>
    </svg>
 {{/if}}
