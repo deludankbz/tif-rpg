@@ -8,6 +8,7 @@ import * as sheets from "./sheets/_module.mjs";       // Import sheet classes.
 import { MINID6 } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
+import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 
 const collections = foundry.documents.collections;
 const foundrySheets = foundry.appv1.sheets;
@@ -31,6 +32,7 @@ globalThis.miniD6 = {
 };
 
 Hooks.once('init', function () {
+  
   // Add custom constants for configuration.
   CONFIG.MINID6 = MINID6;
 
@@ -51,12 +53,14 @@ Hooks.once('init', function () {
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
     explorer: models.MiniD6Explorer,
+    creature: models.MiniD6Creature,
     npc: models.MiniD6NPC,
   };
   CONFIG.Item.documentClass = MiniD6Item;
   CONFIG.Item.dataModels = {
+    effect: models.MiniD6Effect,
     equipment: models.MiniD6Gear,
-    weapon: models.MiniD6Feature,
+    weapon: models.MiniD6ItemBase,
   };
 
   // Active Effects are never copied to the Actor,
@@ -67,16 +71,19 @@ Hooks.once('init', function () {
   // Register sheet application classes
   collections.Actors.unregisterSheet('core', foundrySheets.ActorSheet);
   collections.Actors.registerSheet('miniD6', sheets.MiniD6ActorExplorerSheet, {
-    types: ["explorer"],
+    types: ['explorer', 'npc', 'creature'],
     makeDefault: true,
     label: 'MINID6.SheetLabels.Actor',
   });
 
   collections.Items.unregisterSheet('core', foundrySheets.ItemSheet);
   collections.Items.registerSheet('miniD6', sheets.MiniD6ItemSheet, {
+    types: ['equipment', 'effect', 'weapon'],
     makeDefault: true,
     label: 'MINID6.SheetLabels.Item',
   });
+
+  preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */

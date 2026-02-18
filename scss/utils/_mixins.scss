@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
 @mixin element-invisible {
   position: absolute;
 
@@ -14,6 +17,8 @@
 @mixin hide {
   display: none;
 }
+
+$border: $border-size solid $md6-cream-30;
 
 // text mixins
 .lower  { text-transform: lowercase; }
@@ -37,3 +42,65 @@
     inset 0px 2px 0px 0px rgba(white, 0.2),
     inset 0px 0px 4px 0px rgba(black, 0.2);
 }
+
+// background
+
+/* 
+ * Change bg's blend mode and color
+ */
+%screen-bm {
+  background-color: $md6-cream-10;
+  background-blend-mode: screen; 
+}
+
+// Nav Bar Custom tab with icons
+%tab-icon {
+  content: "";
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+%nav-tab-icons {
+    a {
+      span { display: none; }
+      &::after { 
+        @extend %tab-icon;
+        $icon-size: var(--md6-icon-md);
+        width: $icon-size !important;
+        height: $icon-size !important;
+      }
+      &::after {
+        height: 16px;
+      }
+    }
+    
+    // inventory icons
+    a[data-tab="inventory"]:not(.active)::after {
+      background-image: url(../assets/ui/sheets/actors/nav-tab-icons/inv-inactive.svg);
+    }
+    
+    a[data-tab="inventory"].active::after {
+      background-image: url(../assets/ui/sheets/actors/nav-tab-icons/inv.svg);
+    }
+    
+    // effects icons
+    a[data-tab="effects"]:not(.active)::after {
+      background-image: url(../assets/ui/sheets/actors/nav-tab-icons/sa-inactive.svg);
+    }
+    
+    a[data-tab="effects"].active::after {
+      background-image: url(../assets/ui/sheets/actors/nav-tab-icons/sa.svg);
+    }
+    
+    // description icons
+    a[data-tab="biography"]:not(.active)::after {
+      background-image: url(../assets/ui/sheets/actors/nav-tab-icons/info-inactive.svg);
+    }
+    
+    a[data-tab="biography"].active::after {
+      background-image: url(../assets/ui/sheets/actors/nav-tab-icons/info.svg);
+    }
+  }
+  

@@ -15,11 +15,18 @@
     "Actor": {
       "Tabs": {
         "Biography": "Biography",
-        "Notes": "Notes",
         "Features": "Features",
         "Gear": "Gear",
-        "Stats": "Stats",
-        "Inventory": "Inventory"
+        "Effects": "Effects",
+        "Inventory": "Inventory",
+        
+        "Tooltips": {
+          "Biography": "Biography",
+          "Features": "Features",
+          "Gear": "Gear",
+          "Effects": "Effects",
+          "Inventory": "Inventory"
+        }
       },
       "base": {
         "FIELDS": {
@@ -30,7 +37,10 @@
         }
       },
       "Explorer": {
-       "FIELDS": {
+        "FIELDS": {
+          "name": {
+            "label": "Name"
+          },
           "age": {
             "label": "Age"
           }
@@ -39,8 +49,12 @@
       "NPC": {
         "FIELDS": {
           "cr": {"label": "CR"}
-        },
-        "xp": {"label": "XP"}
+        }
+      },
+      "CREATURE": {
+        "FIELDS": {
+          "health": {"label": "Health"}
+        }
       }
     },
     "Item": {
@@ -84,7 +98,7 @@
     "Item": {
       "equipment": "Equipment",
       "weapon": "Weapon",
-      "skill": "Skill"
+      "effect": "Effect"
     }
   }
 }

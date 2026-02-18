@@ -1,0 +1,93 @@
+@use '../utils' as *;
+
+/* ---------------------------------------- */
+/* Override foundry's default layers        */
+/* ---------------------------------------- */
+
+:root {
+  /* ---------------------------------------- */
+  /* Colors from scss/utils/colors.scss       */
+  /* ---------------------------------------- */
+  --md6-white: #fff;
+
+  // Black shades
+  --md6-black: #000000;
+  --md6-black-80: color(from $md6-black srgb r g b / 0.8);
+  --md6-black-60: color(from $md6-black srgb r g b / 0.6);
+  --md6-black-30: color(from $md6-black srgb r g b / 0.3);
+  --md6-black-10: color(from $md6-black srgb r g b / 0.1);
+
+  // Beige/Cream
+  --md6-cream: rgb(208, 199, 182);
+  --md6-cream-60: rgba(208, 199, 182, 0.6);
+  --md6-cream-30: rgba(208, 199, 182, 0.3);
+  --md6-cream-10: rgba(208, 199, 182, 0.1);
+
+  // Blue
+  --md6-light-blue-acc: rgba(112, 169, 222);
+
+  --md6-light-blue: rgb(107, 124, 136);
+
+  // Dark Blue
+  --md6-dark-blue:     rgba(36, 50, 57);
+  --md6-dark-blue-80:  rgba(36, 50, 57, 0.8);
+  --md6-dark-blue-60:  rgba(36, 50, 57, 0.6);
+  --md6-dark-blue-50:  rgba(36, 50, 57, 0.5);
+  --md6-dark-blue-30:  rgba(36, 50, 57, 0.3);
+  --md6-dark-blue-10:  rgba(36, 50, 57, 0.1);
+
+  // Red
+  --md6-red-acc: rgb(244, 162, 80);
+
+  --md6-red: rgb(217, 59, 19);
+
+
+  // -------------------------- //
+
+  /* Icon Sizes */
+  --md6-icon-sm: 16px;
+  --md6-icon-md: 24px;
+  --md6-icon-lg: 32px;
+
+  /* explorer sheet inventory */
+  --md6-item-frame-padding: 16px;
+
+  --md6-item-frame: url(../assets/ui/sheets/items/frames/item-bg-normal.webp);
+  --md6-item-frame-selected: url(../assets/ui/sheets/items/frames/item-bg-select.webp);
+  --md6-item-frame-equipped: url(../assets/ui/sheets/items/frames/item-bg-equipped.webp);
+
+  /* Explorer: Se tab */
+  --md6-effect-item-gap: 12px;
+}
+
+@layer elements.typography {
+  /* ---------------------------------------- */
+  /*  Headers                                 */
+  /* ---------------------------------------- */
+  
+  h1, h2, h3, 
+  h4, h5, h6
+  {
+    color: var(--color-text-primary);
+  }
+  
+  .md6 {
+    h1, h2, h3, 
+    h4, h5, h6
+    {
+      font-family: $font-body;
+      color: var(--color-text-primary);
+    }
+  }
+
+  /* ---------------------------------------- */
+  /*  Dividers                                */
+  /* ---------------------------------------- */
+  hr {
+    background-image: linear-gradient(90deg, $md6-cream 50%, transparent 100%);
+  }
+}
+
+@layer applications {
+
+}

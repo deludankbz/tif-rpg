@@ -1,0 +1,35 @@
+{{!-- Heart icon with number --}}
+{{#if (eq type "heart-with-number")}}
+   <svg
+      width="{{size}}"
+      height="{{size}}"
+      viewBox="0 0 512 512"
+      fill="none"
+      version="1.1"
+      id="svg1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+   <g id="heart">
+      <path
+         id="Vector"
+         d="m 256,146.832 c 0,0 78.669,-92.8162 150.186,-14.28 C 477.703,211.089 391.882,275.346 256,411 120.118,275.346 34.2973,211.089 105.814,132.552 177.331,54.0158 256,146.832 256,146.832 Z"
+         fill="{{color1}}" />
+      <text
+         id="34"
+         fill="{{color2}}"
+         stroke="{{color1}}"
+         style="white-space:pre;stroke:{{color1}};stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers"
+         stroke-width="15"
+         xml:space="preserve"
+         font-family="Roboto"
+         font-size="157px"
+         font-weight="bold"
+         letter-spacing="0em"
+         x="10"><tspan
+            x="116.695"
+            y="352.66199"
+            id="tspan1"
+            style="stroke:{{color1}};stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke fill markers">{{value}}</tspan></text>
+   </g>
+   </svg>
+{{/if}}

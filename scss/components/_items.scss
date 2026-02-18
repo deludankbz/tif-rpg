@@ -1,3 +1,5 @@
+@use '../utils' as *;
+
 // Section Header
 .items-header {
   height: 28px;
@@ -5,7 +7,6 @@
   padding: 0;
   align-items: center;
   background: rgba(0, 0, 0, 0.05);
-  border: $border-groove;
   font-weight: bold;
   > * {
     font-size: 14px;
@@ -30,7 +31,7 @@
   padding: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  color: $c-tan;
+  color: $md6-cream-30;
 
   // Child lists
   .item-list {
@@ -71,10 +72,10 @@
   .item {
     align-items: center;
     padding: 0 2px; // to align with the header border
-    border-bottom: 1px solid $c-faint;
+    border-bottom: 1px solid $md6-cream-60;
     &:last-child { border-bottom: none; }
     .item-name {
-      color: $c-dark;
+      color: $md6-black;
       .item-image {
         flex: 0 0 30px;
         height: 30px;
@@ -85,7 +86,7 @@
     }
   }
 
-  .item-prop {
+  .item-properties {
     text-align: center;
     border-left: 1px solid #c9c7b8;
     border-right: 1px solid #c9c7b8;
@@ -99,7 +100,7 @@
     padding: 0;
     align-items: center;
     background: rgba(0, 0, 0, 0.05);
-    border: $border-groove;
+    border: $border;
     font-weight: bold;
     > * {
       font-size: 12px;

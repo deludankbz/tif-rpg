@@ -16,7 +16,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['miniD6', 'item'],
+    classes: ['md6', 'item'],
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -45,16 +45,6 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
     description: {
       template: 'systems/miniD6/templates/item/description.hbs',
     },
-    attributesFeature: {
-      template:
-        'systems/miniD6/templates/item/attribute-parts/feature.hbs',
-    },
-    attributesGear: {
-      template: 'systems/miniD6/templates/item/attribute-parts/gear.hbs',
-    },
-    attributesSpell: {
-      template: 'systems/miniD6/templates/item/attribute-parts/spell.hbs',
-    },
     effects: {
       template: 'systems/miniD6/templates/item/effects.hbs',
     },
@@ -64,19 +54,19 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'tabs', 'description'];
+    options.parts = ['header', 'tabs', 'description', 'effects'];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
     switch (this.document.type) {
-      case 'feature':
-        options.parts.push('attributesFeature', 'effects');
+      case 'equipment':
+        options.parts.push('header');
         break;
-      case 'gear':
-        options.parts.push('attributesGear');
+      case 'effect':
+        options.parts.push('header', 'effects');
         break;
-      case 'spell':
-        options.parts.push('attributesSpell');
+      case 'weapon':
+        options.parts.push('header', 'effects');
         break;
     }
   }

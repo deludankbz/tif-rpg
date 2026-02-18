@@ -1,0 +1,23 @@
+<section class='tab {{tab.id}} {{tab.cssClass}}' data-group='primary' data-tab='{{tab.id}}' >
+  
+  <div class="effects">
+    <div class="" style="height: 80%" data-tooltip='{{item.name}}' data-action="onSelectItem">
+
+      {{log this}}
+
+      {{#each effects as |item id|}}
+      <div class="item draggable flexrow" data-item-id="{{item._id}}" data-item-uuid="{{item.uuid}}" data-document-class="Item" data-action="onSelectItem">
+        <img src='{{item.img}}'/>
+        <div class="flexcol details">
+          <label>{{item.name}}</label>
+          {{{item.system.description}}}
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
+    
+  </div>
+
+  
+</section>

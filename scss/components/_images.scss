@@ -1,0 +1,8 @@
+// "locked aspect ratio" image class
+.lar-image {
+  height: auto;
+  min-width: 64px;
+  max-width: 64px;
+  flex-shrink: 1;
+  object-fit: cover;
+}

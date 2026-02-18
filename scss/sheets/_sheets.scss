@@ -1,0 +1,149 @@
+/* default miniD6 windows (ALL) */
+@use '../utils' as *;
+@use '../components' as *;
+
+body .application,
+body.theme-dark .application {
+
+  border-radius: 12px;
+  border-width: 2px;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  &.md6 .window-content { padding: 0; }
+
+  .window-content {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  --background: #{$md6-black-80};
+  --color-text-accent: #{$md6-cream};
+  --color-text-primary: #{$md6-cream};
+  --color-text-secondary: #{$md6-cream};
+  --color-shadow-primary: #{$md6-cream};
+  --color-border: #{$md6-cream-30};
+  --color-header-background: none;
+  --color-form-label: #{$md6-cream};
+  --color-form-hint: #{$md6-cream-60};
+  // --color-form-label-hover: #{$c-gold};
+  // --color-form-hint-hover: #{$c-cream};
+  --color-fieldset-border: #{$md6-cream-30};
+
+  /* ================== */
+  /* Button             */
+  /* ================== */
+
+  button {
+    --button-text-color: #{$md6-cream};
+  }
+
+  /* ================== */
+  /* Inputs             */
+  /* ================== */
+
+  select,
+  button,
+  input[type=text],
+  input[type=number]
+  {
+    border: 1px solid #{$md6-cream-30};
+  }
+
+  input[type=range] {
+    --range-track-color: var(--md6-cream-30);
+    --range-track-border-color: var(--input-border-color);
+    --range-thumb-background-color: rgba(11, 10, 19, 0.9);
+    --range-thumb-border-color: var(--color-warm-1);
+  }
+
+  input,
+  select {
+    --input-background-color: #{$md6-black-30};
+    --input-text-color: #{$md6-cream};
+    --input-placeholder-color: #{$md6-cream-30};
+    --input-focus-outline-color: #{$md6-cream-30};
+
+    option {
+      background-color: $md6-black;
+    }
+  }
+
+  .window-header {
+    border-bottom: 0;
+  }
+
+  nav.sheet-tabs.tabs {
+    @extend %md6-frame; @extend .light;
+  }
+
+  .scrollable {
+    padding-right: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: $md6-cream transparent;
+  }
+
+  nav.tabs {
+    border-top: 0;
+    border-bottom-color: $md6-cream;
+    margin: 10px 0;
+    color: $md6-cream;
+
+    text-transform: uppercase;
+    justify-content: center;
+
+    &.scrollable,
+    &.vertical {
+      justify-content: unset;
+    }
+
+    [data-tab] {
+      color: $md6-cream;
+      padding-left: 10px;
+      padding-right: 10px;
+      line-height: 1.5;
+      border: 3px solid transparent;
+
+      &.active {
+        color: $md6-cream-30;
+        // border-image-slice: 20% 3% 5% 3% fill;
+        // border-image-width: 5px 5px 1px;
+        // border-image-outset: 0px 0px 0px 0px;
+        // border-image-repeat: stretch stretch;
+        // border-image-source: url(../assets/decorations/tab-background.svg);
+        // border-style: solid;
+      }
+    }
+  }
+
+
+  footer {
+    button {
+      @extend %screen-bm;
+    }
+  }
+
+  a.button,
+  button {
+    outline: none !important;
+    background: #{$md6-black-30};
+    border: none;
+  }
+
+  a.button:disabled,
+  button:disabled {
+    cursor: inherit;
+  }
+  a.button:hover,
+  button:hover {
+    background: #{$md6-cream};
+    color: #{$md6-black};
+    border: none;
+  }
+  a.button:focus,
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 4px #{$md6-cream};
+  }
+}
