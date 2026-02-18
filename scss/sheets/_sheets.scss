@@ -1,4 +1,6 @@
 /* default miniD6 windows (ALL) */
+@use '../utils' as *;
+@use '../components' as *;
 
 body .application,
 body.theme-dark .application {
@@ -116,6 +118,11 @@ body.theme-dark .application {
   }
 
 
+  footer {
+    button {
+      @extend %screen-bm;
+    }
+  }
 
   a.button,
   button {

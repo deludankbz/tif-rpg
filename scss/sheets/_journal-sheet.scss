@@ -1,3 +1,4 @@
+@use '../utils' as *;
 .sheet.journal-sheet:not(.journal-entry-page) {
   background-color: $md6-dark-blue-80;
   

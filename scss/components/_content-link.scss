@@ -1,3 +1,5 @@
+@use '../utils' as *;
+
 a {
   &.content-link,
   &.inline-roll { 

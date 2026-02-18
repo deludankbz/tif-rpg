@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
 @mixin element-invisible {
   position: absolute;
 
@@ -14,6 +17,8 @@
 @mixin hide {
   display: none;
 }
+
+$border: $border-size solid $md6-cream-30;
 
 // text mixins
 .lower  { text-transform: lowercase; }
@@ -43,7 +48,7 @@
 /* 
  * Change bg's blend mode and color
  */
-.screen-bm {
+%screen-bm {
   background-color: $md6-cream-10;
   background-blend-mode: screen; 
 }

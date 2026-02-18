@@ -1,34 +1,5 @@
-// Import utilities.
-@import 'utils/typography';
-@import 'utils/colors';
-@import 'utils/mixins';
-@import 'utils/variables';
-
-/* Global styles */
-@import 'global/layers';
-@import 'global/grid';
-@import 'global/flex';
-@import 'global/body';
-
-/* Import sheets */
-
-// Global Sheets
-@import 'sheets/sheets';
-
-// Actor Sheets
-@import 'sheets/actor/sheet-creature';
-@import 'sheets/actor/sheet-explorer';
-
-// Journal Sheet
-@import 'sheets/journal-sheet';
-
-
-/* Styles limited to miniD6 sheets */
-.md6 {
-  @import 'components/content-link';
-  @import 'components/forms';
-  @import 'components/divs';
-  @import 'components/images';
-  @import 'components/resource';
-  @import 'components/items';
-}
+@use 'utils';
+@use 'global';
+@use 'sheets';
+@use 'components';
+@use 'md6-div';

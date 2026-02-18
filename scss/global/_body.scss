@@ -1,3 +1,5 @@
+@use '../utils' as *;
+
 body {
   --font-header: #{$font-header};
   --font-sans: #{$font-body};
