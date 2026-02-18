@@ -1,9 +1,9 @@
 import MiniD6ActorBase from './base-actor.mjs';
 
-export default class MiniD6NPC extends MiniD6ActorBase {
+export default class MiniD6Creature extends MiniD6ActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'MINID6.Actor.NPC',
+    'MINID6.Actor.CREATURE',
   ];
 
   static defineSchema() {

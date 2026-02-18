@@ -53,6 +53,7 @@ Hooks.once('init', function () {
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
     explorer: models.MiniD6Explorer,
+    creature: models.MiniD6Creature,
     npc: models.MiniD6NPC,
   };
   CONFIG.Item.documentClass = MiniD6Item;
