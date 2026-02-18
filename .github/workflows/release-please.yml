@@ -44,13 +44,15 @@ jobs:
         run: |
           zip -r miniD6.zip . \
             --exclude "Makefile" \
-            --exclude "notes/*" \
+            --exclude "notes.md" \
+            --exclude "package.json" \
             --exclude ".github/*" \
             --exclude ".git/*" \
             --exclude ".gitignore" \
             --exclude "scss/*" \
             --exclude ".release-please-config.json" \
-            --exclude ".release-please-manifest.json"
+            --exclude ".release-please-manifest.json" \
+            --exclude "extra/*" 
 
 
       - name: Upload release asset
