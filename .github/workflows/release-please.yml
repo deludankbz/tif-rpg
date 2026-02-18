@@ -46,7 +46,12 @@ jobs:
             --exclude "Makefile" \
             --exclude "notes/*" \
             --exclude ".github/*" \
-            --exclude "scss/*"
+            --exclude ".git/*" \
+            --exclude ".gitignore" \
+            --exclude "scss/*" \
+            --exclude ".release-please-config.json" \
+            --exclude ".release-please-manifest.json"
+
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v1
