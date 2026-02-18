@@ -5,7 +5,6 @@
 - Add effect info on effects tab on _source vs system
 
 ## Item and Item sheet
-- Config the document for item types (img etc...)
 
 
 ## Sass
