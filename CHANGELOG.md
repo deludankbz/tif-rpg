@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.3](https://github.com/deludankbz/miniD6/compare/v1.0.2...v1.0.3) (2026-02-18)
+
+
+### Bug Fixes
+
+* Add missing toggle for editable actor and item sheets ([aaa026c](https://github.com/deludankbz/miniD6/commit/aaa026cf5439c34ddaff79622d0556bbdb46dae6))
+
 ## [1.0.2](https://github.com/deludankbz/miniD6/compare/v1.0.1...v1.0.2) (2026-02-18)
 
 
