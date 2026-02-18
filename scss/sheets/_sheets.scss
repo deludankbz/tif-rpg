@@ -11,6 +11,10 @@ body.theme-dark .application {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 
+  button[type="button toggle-sheet-mode"].fa-wand-magic-sparkles {
+    color: $md6-red-acc !important;
+  }
+  
   &.md6 .window-content { padding: 0; }
 
   .window-content {
@@ -70,9 +74,6 @@ body.theme-dark .application {
     }
   }
 
-  .window-header {
-    border-bottom: 0;
-  }
 
   nav.sheet-tabs.tabs {
     @extend %md6-frame; @extend .light;

@@ -4,6 +4,10 @@
 // DIVS
 // ------------------
 
+.sheet-edit-mode {
+  @extend %yellow-stripes;
+}
+
 .md6-frame,
 %md6-frame {
   $c: $md6-cream-30;
