@@ -1,6 +1,6 @@
 {
   "name": "miniD6",
-  "version": "2.0.0",
+  "version": "1.2.0",
   "description": "CSS compiler for the MiniD6 system",
   "scripts": {
     "build": "sass src/scss/miniD6.scss css/miniD6.css --style=expanded --no-source-map",
@@ -9,7 +9,7 @@
   "browserslist": [
     "last 3 versions"
   ],
-  "author": "Deludank",
+  "author": "Lucca Pessoa",
   "license": "MIT",
   "private": true,
   "devDependencies": {

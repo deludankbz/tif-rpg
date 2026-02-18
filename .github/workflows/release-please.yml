@@ -15,8 +15,9 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         with:
-          release-type: node
-          package-name: minid6
+          config-file: .release-please-config.json
+          manifest-file: .release-please-manifest.json
+          
 
   build-and-release:
     runs-on: ubuntu-latest
