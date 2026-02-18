@@ -24,6 +24,8 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
       deleteDoc: this._deleteDoc,
       toggleEffect: this._toggleEffect,
       roll: this._onRoll,
+      toggleSheetMode: this._toggleSheetMode,
+      stepSystemAttr: this._stepSystemAttr
     },
     // Custom property that's merged into `this.options`
     // dragDrop: [{ dragSelector: '.draggable', dropSelector: null }],
@@ -259,6 +261,51 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
     this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]");
     //, { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true }
   }
+
+  /** @inheritDoc */
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+
+    if (!this.document.inCompendium && this.document.isOwner) {
+      const toggleLabel = game.i18n.localize(`CUSTOMFIELDS.toggleSheetMode.${this.actor.system.playMode}`);
+      const cssClass = this.actor.system.playMode ? "wand-magic-sparkles" : "lock";
+      const togglePlayEditId = `
+        <button type="button toggle-sheet-mode" class="header-control fa-solid fa-${cssClass} icon" data-action="toggleSheetMode" data-tooltip="${toggleLabel}"></button>
+      `;
+      
+      this.window.close.insertAdjacentHTML("beforebegin", togglePlayEditId);
+    }
+
+    return frame;
+  }
+
+  /**
+  * Toggle sheet mode from editable to locked
+  */
+  static async _toggleSheetMode(event, target) {
+    const toggleLabel = game.i18n.localize(`CUSTOMFIELDS.toggleSheetMode.${!this.actor.system.playMode}`);
+    $(target).toggleClass("fa-wand-magic-sparkles").toggleClass("fa-lock").attr("data-tooltip", toggleLabel);
+    await this.actor.update({ "system.playMode": !this.actor.system.playMode });
+  }
+
+  /**
+  * Step system filed by value
+  */
+  static async _stepSystemAttr(event, target) {
+    // TODO FIX: check for active effects
+    const { attr, step } = target.dataset;
+
+    if (this.actor.system.hasOwnProperty(`${attr}`)) {
+      const field = this.actor.system[`${attr}`];
+      const result = await new Roll(`${field} ${step}`).evaluate();
+      this.actor.update({
+        [`system.${attr}`]: result.total
+      });
+    } else {
+      ui.notifications.warn(`No system field '${attr}' for ${this.actor.name} `)
+    }
+    
+  }
   
   /**
   * Get context menu entries for item buttons.
@@ -347,6 +394,8 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   * @protected
   */
   static async _onSelectItem(event, target) {
+    // TODO: use this.window
+    // TODO: use promisse.all!! 
     let $item = $(target);
     let $activeTab = $(this.document.sheet.form).find('section.tab.active');
     let $itemGrid = $activeTab.find('div.item');

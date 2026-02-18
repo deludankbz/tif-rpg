@@ -4,15 +4,42 @@
   
   <div class="info flexcol">
     <input name="name" type="text"  value="{{actor.name}}" placeholder="Name"/>
-    {{!-- Custom SVG (dynamic-icons) --}}
-    {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
-    type="heart-with-number" 
-    value=system._source.vigor
-    color1="var(--md6-red)" 
-    color2="var(--md6-cream)" 
-    size="52"
-  }}
-  <label for=""></label>
+    <div class="flexrow">
+  
+      {{!-- Custom SVG (dynamic-icons) --}}
+      {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
+      type="heart-with-number" 
+      value=system._source.vigor
+      color1="var(--md6-red)" 
+      color2="var(--md6-cream)" 
+      size="52"
+      }}
+
+        <div class="sheet-edit-mode health-control flexcol" stlye="">
+                {{#if system.playMode}}
+        <a data-action="stepSystemAttr" data-attr="vigor" data-step="+ 1">
+          {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
+          type="plus" 
+          value=system._source.vigor
+          color1="var(--md6-red)" 
+          size="16"
+          }}
+        </a>
+        <a data-action="stepSystemAttr" data-attr="vigor" data-step="- 1">
+          {{> 'systems/miniD6/templates/extra/dynamic-icons.hbs' 
+          type="sub" 
+          value=system._source.vigor
+          color1="var(--md6-red)" 
+          size="16"
+          }}
+        </a>
+             {{/if}}
+        </div>
+
+ 
+    </div>
+
+
 </div>
 
 </header>

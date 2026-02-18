@@ -89,6 +89,7 @@
       "Inactive": "Inactive Effects"
     }
   },
+
   "TYPES": {
     "Actor": {
       "explorer": "Explorer",
@@ -99,6 +100,13 @@
       "equipment": "Equipment",
       "weapon": "Weapon",
       "effect": "Effect"
+    }
+  },
+
+  "CUSTOMFIELDS": {
+    "toggleSheetMode": {
+      "true": "Current sheet is editable",
+      "false": "Current sheet is locked"
     }
   }
 }

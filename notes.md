@@ -1,8 +1,9 @@
-# TODO
+# TODOs
+- TODO: Add sheetEditMode to item sheets 
 ## Actor and actor sheet
-- Config the document for npc, creature, and explorer (img etc...)
-- set prototoken for correct image
-- Add effect info on effects tab on _source vs system
+- TODO: Config the document for npc, creature, and explorer (img etc...)
+- TODO: set prototoken for correct image
+- TODO: Add effect info on effects tab on _source vs system
 
 ## Item and Item sheet
 

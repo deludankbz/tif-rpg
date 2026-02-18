@@ -23,6 +23,8 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
       toggleEffect: this._toggleEffect,
+      toggleSheetMode: this._toggleSheetMode,
+      stepSystemAttr: this._stepSystemAttr
     },
     form: {
       submitOnChange: true,
@@ -203,6 +205,50 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
     // You may want to add other special handling here
     // Foundry comes with a large number of utility classes, e.g. SearchFilter
     // That you may want to implement yourself.
+  }
+
+  /** @inheritDoc */
+  async _renderFrame(options) {
+    const frame = await super._renderFrame(options);
+
+    if (!this.document.inCompendium && this.document.isOwner) {
+      const toggleLabel = game.i18n.localize(`CUSTOMFIELDS.toggleSheetMode.${this.item.system.playMode}`);
+      const cssClass = this.item.system.playMode ? "wand-magic-sparkles" : "lock";
+      const togglePlayEditId = `
+        <button type="button toggle-sheet-mode" class="header-control fa-solid fa-${cssClass} icon" data-action="toggleSheetMode" data-tooltip="${toggleLabel}"></button>
+      `;
+      
+      this.window.close.insertAdjacentHTML("beforebegin", togglePlayEditId);
+    }
+
+    return frame;
+  }
+
+  /**
+  * Toggle sheet mode from editable to locked
+  */
+  static async _toggleSheetMode(event, target) {
+    const toggleLabel = game.i18n.localize(`CUSTOMFIELDS.toggleSheetMode.${!this.item.system.playMode}`);
+    $(target).toggleClass("fa-wand-magic-sparkles").toggleClass("fa-lock").attr("data-tooltip", toggleLabel);
+    await this.item.update({ "system.playMode": !this.item.system.playMode });
+  }
+
+  /**
+  * Step system filed by value
+  */
+  static async _stepSystemAttr(event, target) {
+    // TODO FIX: check for active effects
+    const { attr, step } = target.dataset;
+
+    if (this.item.system.hasOwnProperty(`${attr}`)) {
+      const field = this.item.system[`${attr}`];
+      const result = await new Roll(`${field} ${step}`).evaluate();
+      this.item.update({
+        [`system.${attr}`]: result.total
+      });
+    } else {
+      ui.notifications.warn(`No system field '${attr}' for ${this.item.name} `)
+    }
   }
 
   /**************

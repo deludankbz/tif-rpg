@@ -6,6 +6,8 @@ export default class MiniD6ItemBase extends foundry.abstract
 
     schema.description = new fields.HTMLField();
 
+    schema.playMode = new fields.BooleanField();
+
     return schema;
   }
 }

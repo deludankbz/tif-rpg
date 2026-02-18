@@ -50,6 +50,10 @@ $border: $border-size solid $md6-cream-30;
   -webkit-backdrop-filter: blur(15px);
 }
 
+%yellow-stripes {
+  background-image: repeating-linear-gradient(45deg, #d9ae132d, #d9ae132d 10px, transparent 10px, transparent 20px);
+}
+
 /* 
  * Change bg's blend mode and color
  */
