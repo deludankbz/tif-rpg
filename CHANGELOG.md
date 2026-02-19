@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.1.0](https://github.com/deludankbz/tif-rpg/compare/v1.0.3...v1.1.0) (2026-02-19)
+
+
+### Features
+
+* Change module name ([c3783ab](https://github.com/deludankbz/tif-rpg/commit/c3783ab0e131f35293a0bf8cb8d1afe1469c0035))
+
 ## [1.0.3](https://github.com/deludankbz/miniD6/compare/v1.0.2...v1.0.3) (2026-02-18)
 
 
