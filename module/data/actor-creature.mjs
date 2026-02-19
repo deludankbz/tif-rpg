@@ -1,9 +1,9 @@
-import MiniD6ActorBase from './base-actor.mjs';
+import TIFActorBase from './base-actor.mjs';
 
-export default class MiniD6Creature extends MiniD6ActorBase {
+export default class TIFCreature extends TIFActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'MINID6.Actor.CREATURE',
+    'TIF.Actor.CREATURE',
   ];
 
   static defineSchema() {

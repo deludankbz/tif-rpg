@@ -8,56 +8,56 @@
   /* ---------------------------------------- */
   /* Colors from scss/utils/colors.scss       */
   /* ---------------------------------------- */
-  --md6-white: #fff;
+  --tif-white: #fff;
 
   // Black shades
-  --md6-black: #000000;
-  --md6-black-80: color(from $md6-black srgb r g b / 0.8);
-  --md6-black-60: color(from $md6-black srgb r g b / 0.6);
-  --md6-black-30: color(from $md6-black srgb r g b / 0.3);
-  --md6-black-10: color(from $md6-black srgb r g b / 0.1);
+  --tif-black: #000000;
+  --tif-black-80: color(from $tif-black srgb r g b / 0.8);
+  --tif-black-60: color(from $tif-black srgb r g b / 0.6);
+  --tif-black-30: color(from $tif-black srgb r g b / 0.3);
+  --tif-black-10: color(from $tif-black srgb r g b / 0.1);
 
   // Beige/Cream
-  --md6-cream: rgb(208, 199, 182);
-  --md6-cream-60: rgba(208, 199, 182, 0.6);
-  --md6-cream-30: rgba(208, 199, 182, 0.3);
-  --md6-cream-10: rgba(208, 199, 182, 0.1);
+  --tif-cream: rgb(208, 199, 182);
+  --tif-cream-60: rgba(208, 199, 182, 0.6);
+  --tif-cream-30: rgba(208, 199, 182, 0.3);
+  --tif-cream-10: rgba(208, 199, 182, 0.1);
 
   // Blue
-  --md6-light-blue-acc: rgba(112, 169, 222);
+  --tif-light-blue-acc: rgba(112, 169, 222);
 
-  --md6-light-blue: rgb(107, 124, 136);
+  --tif-light-blue: rgb(107, 124, 136);
 
   // Dark Blue
-  --md6-dark-blue: rgba(36, 50, 57);
-  --md6-dark-blue-80: rgba(36, 50, 57, 0.8);
-  --md6-dark-blue-60: rgba(36, 50, 57, 0.6);
-  --md6-dark-blue-50: rgba(36, 50, 57, 0.5);
-  --md6-dark-blue-30: rgba(36, 50, 57, 0.3);
-  --md6-dark-blue-10: rgba(36, 50, 57, 0.1);
+  --tif-dark-blue: rgba(36, 50, 57);
+  --tif-dark-blue-80: rgba(36, 50, 57, 0.8);
+  --tif-dark-blue-60: rgba(36, 50, 57, 0.6);
+  --tif-dark-blue-50: rgba(36, 50, 57, 0.5);
+  --tif-dark-blue-30: rgba(36, 50, 57, 0.3);
+  --tif-dark-blue-10: rgba(36, 50, 57, 0.1);
 
   // Red
-  --md6-red-acc: rgb(244, 162, 80);
+  --tif-red-acc: rgb(244, 162, 80);
 
-  --md6-red: rgb(217, 59, 19);
+  --tif-red: rgb(217, 59, 19);
 
 
   // -------------------------- //
 
   /* Icon Sizes */
-  --md6-icon-sm: 16px;
-  --md6-icon-md: 24px;
-  --md6-icon-lg: 32px;
+  --tif-icon-sm: 16px;
+  --tif-icon-md: 24px;
+  --tif-icon-lg: 32px;
 
   /* explorer sheet inventory */
-  --md6-item-frame-padding: 16px;
+  --tif-item-frame-padding: 16px;
 
-  --md6-item-frame: url(../assets/ui/sheets/items/frames/item-bg-normal.webp);
-  --md6-item-frame-selected: url(../assets/ui/sheets/items/frames/item-bg-select.webp);
-  --md6-item-frame-equipped: url(../assets/ui/sheets/items/frames/item-bg-equipped.webp);
+  --tif-item-frame: url(../assets/ui/sheets/items/frames/item-bg-normal.webp);
+  --tif-item-frame-selected: url(../assets/ui/sheets/items/frames/item-bg-select.webp);
+  --tif-item-frame-equipped: url(../assets/ui/sheets/items/frames/item-bg-equipped.webp);
 
   /* Explorer: Se tab */
-  --md6-effect-item-gap: 12px;
+  --tif-effect-item-gap: 12px;
 }
 
 @layer elements.typography {
@@ -74,7 +74,7 @@
     color: var(--color-text-primary);
   }
 
-  .md6 {
+  .tif {
 
     h1,
     h2,
@@ -91,6 +91,6 @@
   /*  Dividers                                */
   /* ---------------------------------------- */
   hr {
-    background-image: linear-gradient(90deg, $md6-cream 50%, transparent 100%);
+    background-image: linear-gradient(90deg, $tif-cream 50%, transparent 100%);
   }
 }

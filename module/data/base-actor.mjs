@@ -1,6 +1,6 @@
-export default class MiniD6ActorBase extends foundry.abstract
+export default class TIFActorBase extends foundry.abstract
   .TypeDataModel {
-  static LOCALIZATION_PREFIXES = ["MINID6.Actor.base"];
+  static LOCALIZATION_PREFIXES = ["TIF.Actor.base"];
 
   static defineSchema() {
     const fields = foundry.data.fields;

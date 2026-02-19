@@ -2,7 +2,7 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class MiniD6Actor extends Actor {
+export class TIFActor extends Actor {
   /** @override */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes
@@ -27,7 +27,7 @@ export class MiniD6Actor extends Actor {
    */
   prepareDerivedData() {
     const actorData = this;
-    const flags = actorData.flags.miniD6 || {};
+    const flags = actorData.flags.tif || {};
   }
 
   /**

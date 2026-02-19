@@ -1,6 +1,6 @@
-import MiniD6ItemBase from "./base-item.mjs";
+import TIFItemBase from "./base-item.mjs";
 
-export default class MiniD6Item extends MiniD6ItemBase {
+export default class TIFItem extends TIFItemBase {
 
   static defineSchema() {
     const fields = foundry.data.fields;

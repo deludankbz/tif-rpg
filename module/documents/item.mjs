@@ -2,7 +2,7 @@
 * Extend the basic Item with some very simple modifications.
 * @extends {Item}
 */
-export class MiniD6Item extends Item {
+export class TIFItem extends Item {
   /**
   * Augment the basic Item data model with additional dynamic data.
   */
@@ -76,17 +76,17 @@ export class MiniD6Item extends Item {
     switch (data.type) {
       case "equipment":
         this.updateSource({
-          img: "systems/miniD6/assets/icons/item/briefcase.svg",
+          img: "systems/tif-rpg/assets/icons/item/briefcase.svg",
         });
       break;
         case "effect":
         this.updateSource({
-          img: "systems/miniD6/assets/icons/item/fluffy-flame.svg",
+          img: "systems/tif-rpg/assets/icons/item/fluffy-flame.svg",
         });
       break;
       case "weapon":
         this.updateSource({
-          img: "systems/miniD6/assets/icons/item/broad-dagger.svg",
+          img: "systems/tif-rpg/assets/icons/item/broad-dagger.svg",
         });
       break;
       default:

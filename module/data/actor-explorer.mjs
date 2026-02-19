@@ -1,9 +1,9 @@
-import MiniD6ActorBase from './base-actor.mjs';
+import TIFActorBase from './base-actor.mjs';
 
-export default class MiniD6Explorer extends MiniD6ActorBase {
+export default class TIFExplorer extends TIFActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'MINID6.Actor.Character',
+    'TIF.Actor.Character',
   ];
 
   static defineSchema() {
@@ -47,7 +47,7 @@ export default class MiniD6Explorer extends MiniD6ActorBase {
       );
       // Handle ability label localization.
       this.abilities[key].label =
-        game.i18n.localize(CONFIG.MINID6.abilities[key]) ?? key;
+        game.i18n.localize(CONFIG.TIF.abilities[key]) ?? key;
     }
   }
 

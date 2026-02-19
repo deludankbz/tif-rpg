@@ -1,4 +1,4 @@
-export default class MiniD6DataModel extends foundry.abstract.TypeDataModel {
+export default class TIFDataModel extends foundry.abstract.TypeDataModel {
   /**
    * Convert the schema to a plain object.
    * 

@@ -1,5 +1,5 @@
 {
-  "MINID6": {
+  "TIF": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
       "Con": { "long": "Constitution", "abbr": "con" },
@@ -9,8 +9,8 @@
       "Cha": { "long": "Charisma", "abbr": "cha" }
     },
     "SheetLabels": {
-      "Actor": "MiniD6 Actor Sheet",
-      "Item": "MiniD6 Item Sheet"
+      "Actor": "TIF Actor Sheet",
+      "Item": "TIF Item Sheet"
     },
     "Actor": {
       "Tabs": {

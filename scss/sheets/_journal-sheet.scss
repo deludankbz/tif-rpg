@@ -1,14 +1,14 @@
 @use '../utils' as *;
 .sheet.journal-sheet:not(.journal-entry-page) {
-  background-color: $md6-dark-blue-80;
+  background-color: $tif-dark-blue-80;
   
   button { 
     --button-focus-outline-color: none;
-    --button-hover-background-color: #{$md6-dark-blue};
+    --button-hover-background-color: #{$tif-dark-blue};
   }
   
   .window-header, .journal-sidebar {
-    --color-light-1: #{$md6-cream};
+    --color-light-1: #{$tif-cream};
     
     .window-title {
       font-weight: 600;
@@ -16,7 +16,7 @@
     
     input { 
       @extend .chisel-2px;
-      --input-background-color: #{$md6-dark-blue-60};
+      --input-background-color: #{$tif-dark-blue-60};
       background-blend-mode: multiply;
       border: none;
     }
