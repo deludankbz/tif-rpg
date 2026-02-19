@@ -20,7 +20,7 @@ jobs:
         id: release
         with:
           release-type: node
-          package-name: miniD6
+          package-name: tif-rpg
 
   build-and-release:
     runs-on: ubuntu-latest
@@ -42,19 +42,21 @@ jobs:
 
       - name: Create release archive
         run: |
-          zip -r miniD6.zip . \
+          zip -r tif-rpg.zip . \
             --exclude "Makefile" \
-            --exclude "notes/*" \
+            --exclude "notes.md" \
+            --exclude "package.json" \
             --exclude ".github/*" \
             --exclude ".git/*" \
             --exclude ".gitignore" \
             --exclude "scss/*" \
             --exclude ".release-please-config.json" \
-            --exclude ".release-please-manifest.json"
+            --exclude ".release-please-manifest.json" \
+            --exclude "extra/*" 
 
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
-          files: miniD6.zip
+          files: tif-rpg.zip

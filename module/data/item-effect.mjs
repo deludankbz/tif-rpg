@@ -1,8 +1,8 @@
-import MiniD6ItemBase from './base-item.mjs';
+import TIFItemBase from './base-item.mjs';
 
-export default class MiniD6Effect extends MiniD6ItemBase {
+export default class TIFEffect extends TIFItemBase {
   static LOCALIZATION_PREFIXES = [
-    'MINID6.Item.base',
-    // 'MINID6.Item.Effect',
+    'TIF.Item.base',
+    // 'TIF.Item.Effect',
   ];
 }

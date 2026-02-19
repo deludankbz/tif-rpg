@@ -3,11 +3,11 @@
 a {
   &.content-link,
   &.inline-roll { 
-    --content-link-background: $md6-dark-blue;
-    --content-link-text-color: $md6-dark-blue;
-    --content-link-icon-color: $md6-light-blue;
+    --content-link-background: $tif-dark-blue;
+    --content-link-text-color: $tif-dark-blue;
+    --content-link-icon-color: $tif-light-blue;
     --content-link-border-color: none;
     
-    border-bottom: 1px $md6-light-blue dashed;
+    border-bottom: 1px $tif-light-blue dashed;
  }
 }

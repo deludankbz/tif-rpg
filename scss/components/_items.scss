@@ -31,7 +31,7 @@
   padding: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  color: $md6-cream-30;
+  color: $tif-cream-30;
 
   // Child lists
   .item-list {
@@ -72,10 +72,10 @@
   .item {
     align-items: center;
     padding: 0 2px; // to align with the header border
-    border-bottom: 1px solid $md6-cream-60;
+    border-bottom: 1px solid $tif-cream-60;
     &:last-child { border-bottom: none; }
     .item-name {
-      color: $md6-black;
+      color: $tif-black;
       .item-image {
         flex: 0 0 30px;
         height: 30px;
@@ -114,7 +114,7 @@
   }
 }
 
-// Example style for MiniD6 (can be removed if not needed).
+// Example style for TIF (can be removed if not needed).
 .item-formula {
   
   flex: 0 0 200px;

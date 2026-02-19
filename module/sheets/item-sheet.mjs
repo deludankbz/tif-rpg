@@ -7,7 +7,7 @@ const DragDrop = foundry.applications.ux.DragDrop;
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheetV2}
  */
-export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
+export class TIFItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2
 ) {
   constructor(options = {}) {
@@ -16,7 +16,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['md6', 'item'],
+    classes: ['tif', 'item'],
     actions: {
       onEditImage: this._onEditImage,
       viewDoc: this._viewEffect,
@@ -38,17 +38,17 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/miniD6/templates/item/header.hbs',
+      template: 'systems/tif-rpg/templates/item/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
     description: {
-      template: 'systems/miniD6/templates/item/description.hbs',
+      template: 'systems/tif-rpg/templates/item/description.hbs',
     },
     effects: {
-      template: 'systems/miniD6/templates/item/effects.hbs',
+      template: 'systems/tif-rpg/templates/item/effects.hbs',
     },
   };
 
@@ -87,8 +87,8 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
       // Adding system and flags for easier access
       system: this.item.system,
       flags: this.item.flags,
-      // Adding a pointer to CONFIG.MINID6
-      config: CONFIG.MINID6,
+      // Adding a pointer to CONFIG.TIF
+      config: CONFIG.TIF,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
@@ -153,7 +153,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
         // FontAwesome Icon, if you so choose
         icon: '',
         // Run through localization
-        label: 'MINID6.Item.Tabs.',
+        label: 'TIF.Item.Tabs.',
       };
       switch (partId) {
         case 'header':
@@ -260,7 +260,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle changing a Document's image.
    *
-   * @this MiniD6ItemSheet
+   * @this TIFItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise}
@@ -288,7 +288,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Renders an embedded document's sheet
    *
-   * @this MiniD6ItemSheet
+   * @this TIFItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
@@ -301,7 +301,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handles item deletion
    *
-   * @this MiniD6ItemSheet
+   * @this TIFItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
@@ -314,7 +314,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
    *
-   * @this MiniD6ItemSheet
+   * @this TIFItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
@@ -348,7 +348,7 @@ export class MiniD6ItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Determines effect parent to pass to helper
    *
-   * @this MiniD6ItemSheet
+   * @this TIFItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private

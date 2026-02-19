@@ -5,13 +5,13 @@
 /* Creature Sheet    */
 /* ################# */
 
-.sheet.md6.creature {
+.sheet.tif.creature {
   
   header.content-header {
-    @extend %md6-frame; @extend .light; @extend .bt;
+    @extend %tif-frame; @extend .light; @extend .bt;
     
-    padding: var(--md6-effect-item-gap);
-    gap: var(--md6-effect-item-gap);
+    padding: var(--tif-effect-item-gap);
+    gap: var(--tif-effect-item-gap);
     align-items: start;
     
     .profile-img {
@@ -25,7 +25,7 @@
   /* ----------------- */
   
   nav.sheet-tabs.tabs {
-    @extend %md6-frame;
+    @extend %tif-frame;
     @extend .dark;
     
     margin: 0;

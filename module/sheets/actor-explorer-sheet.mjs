@@ -1,6 +1,6 @@
-import { MiniD6ActorSheet } from "./actor-sheet.mjs";
+import { TIFActorSheet } from "./actor-sheet.mjs";
 
-export class MiniD6ActorExplorerSheet extends MiniD6ActorSheet {
+export class TIFActorExplorerSheet extends TIFActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ['simple'],
     position: {

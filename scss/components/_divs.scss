@@ -8,9 +8,9 @@
   @extend %yellow-stripes;
 }
 
-.md6-frame,
-%md6-frame {
-  $c: $md6-cream-30;
+.tif-frame,
+%tif-frame {
+  $c: $tif-cream-30;
   border: 2px $c solid;
   border-left: 0px;
   border-right: 0px;
@@ -37,6 +37,6 @@
   &.light { @extend %screen-bm; }
   &.dark { 
     @extend %screen-bm;
-    background-color: $md6-black-30;
+    background-color: $tif-black-30;
   }
 }

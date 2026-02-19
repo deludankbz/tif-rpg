@@ -1,11 +1,11 @@
 // Import document classes.
-import { MiniD6Actor } from './documents/actor.mjs';
-import { MiniD6Item } from './documents/item.mjs';
+import { TIFActor } from './documents/actor.mjs';
+import { TIFItem } from './documents/item.mjs';
 
 import * as sheets from "./sheets/_module.mjs";       // Import sheet classes.
 
 // Import helper/utility classes and constants.
-import { MINID6 } from './helpers/config.mjs';
+import { TIF } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
@@ -19,10 +19,10 @@ const foundrySheets = foundry.appv1.sheets;
 
 // Add key classes to the global scope so they can be more easily used
 // by downstream developers
-globalThis.miniD6 = {
+globalThis.tif = {
   documents: {
-    MiniD6Actor,
-    MiniD6Item,
+    TIFActor,
+    TIFItem,
   },
   utils: {
     rollItemMacro,
@@ -34,7 +34,7 @@ globalThis.miniD6 = {
 Hooks.once('init', function () {
   
   // Add custom constants for configuration.
-  CONFIG.MINID6 = MINID6;
+  CONFIG.TIF = TIF;
 
   /**
    * Set an initiative formula for the system
@@ -46,21 +46,21 @@ Hooks.once('init', function () {
   };
 
   // Define custom Document and DataModel classes
-  CONFIG.Actor.documentClass = MiniD6Actor;
+  CONFIG.Actor.documentClass = TIFActor;
 
   // Note that you don't need to declare a DataModel
   // for the base actor/item classes - they are included
   // with the Character/NPC as part of super.defineSchema()
   CONFIG.Actor.dataModels = {
-    explorer: models.MiniD6Explorer,
-    creature: models.MiniD6Creature,
-    npc: models.MiniD6NPC,
+    explorer: models.TIFExplorer,
+    creature: models.TIFCreature,
+    npc: models.TIFNPC,
   };
-  CONFIG.Item.documentClass = MiniD6Item;
+  CONFIG.Item.documentClass = TIFItem;
   CONFIG.Item.dataModels = {
-    effect: models.MiniD6Effect,
-    equipment: models.MiniD6Gear,
-    weapon: models.MiniD6ItemBase,
+    effect: models.TIFEffect,
+    equipment: models.TIFGear,
+    weapon: models.TIFItemBase,
   };
 
   // Active Effects are never copied to the Actor,
@@ -70,17 +70,17 @@ Hooks.once('init', function () {
 
   // Register sheet application classes
   collections.Actors.unregisterSheet('core', foundrySheets.ActorSheet);
-  collections.Actors.registerSheet('miniD6', sheets.MiniD6ActorExplorerSheet, {
+  collections.Actors.registerSheet('tif-rpg', sheets.TIFActorExplorerSheet, {
     types: ['explorer', 'npc', 'creature'],
     makeDefault: true,
-    label: 'MINID6.SheetLabels.Actor',
+    label: 'TIF.SheetLabels.Actor',
   });
 
   collections.Items.unregisterSheet('core', foundrySheets.ItemSheet);
-  collections.Items.registerSheet('miniD6', sheets.MiniD6ItemSheet, {
+  collections.Items.registerSheet('tif-rpg', sheets.TIFItemSheet, {
     types: ['equipment', 'effect', 'weapon'],
     makeDefault: true,
-    label: 'MINID6.SheetLabels.Item',
+    label: 'TIF.SheetLabels.Item',
   });
 
   preloadHandlebarsTemplates();
@@ -127,7 +127,7 @@ async function createDocMacro(data, slot) {
   const item = await Item.fromDropData(data);
 
   // Create the macro command using the uuid.
-  const command = `game.miniD6.rollItemMacro("${data.uuid}");`;
+  const command = `game.tif.rollItemMacro("${data.uuid}");`;
   let macro = game.macros.find(
     (m) => m.name === item.name && m.command === command
   );
@@ -137,7 +137,7 @@ async function createDocMacro(data, slot) {
       type: 'script',
       img: item.img,
       command: command,
-      flags: { 'miniD6.itemMacro': true },
+      flags: { 'tif.itemMacro': true },
     });
   }
   game.user.assignHotbarMacro(macro, slot);

@@ -18,7 +18,7 @@
   display: none;
 }
 
-$border: $border-size solid $md6-cream-30;
+$border: $border-size solid $tif-cream-30;
 
 // text mixins
 .lower  { text-transform: lowercase; }
@@ -58,7 +58,7 @@ $border: $border-size solid $md6-cream-30;
  * Change bg's blend mode and color
  */
 %screen-bm {
-  background-color: $md6-cream-10;
+  background-color: $tif-cream-10;
   background-blend-mode: screen; 
 }
 
@@ -76,7 +76,7 @@ $border: $border-size solid $md6-cream-30;
       span { display: none; }
       &::after { 
         @extend %tab-icon;
-        $icon-size: var(--md6-icon-md);
+        $icon-size: var(--tif-icon-md);
         width: $icon-size !important;
         height: $icon-size !important;
       }

@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "miniD6"
+      "package-name": "tif-rpg"
     }
   }
 }

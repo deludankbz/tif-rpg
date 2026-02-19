@@ -1,9 +1,9 @@
-import MiniD6ItemBase from './base-item.mjs';
+import TIFItemBase from './base-item.mjs';
 
-export default class MiniD6Spell extends MiniD6ItemBase {
+export default class TIFSpell extends TIFItemBase {
   static LOCALIZATION_PREFIXES = [
-    'MINID6.Item.base',
-    'MINID6.Item.Spell',
+    'TIF.Item.base',
+    'TIF.Item.Spell',
   ];
 
   static defineSchema() {

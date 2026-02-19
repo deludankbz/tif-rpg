@@ -1,4 +1,4 @@
-/* default miniD6 windows (ALL) */
+/* default TIF windows (ALL) */
 @use '../utils' as *;
 @use '../components' as *;
 
@@ -16,35 +16,35 @@ body.theme-dark .application {
   }
 
   button[type="button toggle-sheet-mode"].fa-wand-magic-sparkles {
-    color: $md6-red-acc !important;
+    color: $tif-red-acc !important;
   }
   
-  &.md6 .window-content { padding: 0; }
+  &.tif .window-content { padding: 0; }
 
   .window-content {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
 
-  --background: #{$md6-black-60};
-  --color-text-accent: #{$md6-cream};
-  --color-text-primary: #{$md6-cream};
-  --color-text-secondary: #{$md6-cream};
-  --color-shadow-primary: #{$md6-cream};
-  --color-border: #{$md6-cream-30};
+  --background: #{$tif-black-60};
+  --color-text-accent: #{$tif-cream};
+  --color-text-primary: #{$tif-cream};
+  --color-text-secondary: #{$tif-cream};
+  --color-shadow-primary: #{$tif-cream};
+  --color-border: #{$tif-cream-30};
   --color-header-background: none;
-  --color-form-label: #{$md6-cream};
-  --color-form-hint: #{$md6-cream-60};
+  --color-form-label: #{$tif-cream};
+  --color-form-hint: #{$tif-cream-60};
   // --color-form-label-hover: #{$c-gold};
   // --color-form-hint-hover: #{$c-cream};
-  --color-fieldset-border: #{$md6-cream-30};
+  --color-fieldset-border: #{$tif-cream-30};
 
   /* ================== */
   /* Button             */
   /* ================== */
 
   button {
-    --button-text-color: #{$md6-cream};
+    --button-text-color: #{$tif-cream};
   }
 
   /* ================== */
@@ -56,11 +56,11 @@ body.theme-dark .application {
   input[type=text],
   input[type=number]
   {
-    border: 1px solid #{$md6-cream-30};
+    border: 1px solid #{$tif-cream-30};
   }
 
   input[type=range] {
-    --range-track-color: var(--md6-cream-30);
+    --range-track-color: var(--tif-cream-30);
     --range-track-border-color: var(--input-border-color);
     --range-thumb-background-color: rgba(11, 10, 19, 0.9);
     --range-thumb-border-color: var(--color-warm-1);
@@ -68,32 +68,32 @@ body.theme-dark .application {
 
   input,
   select {
-    --input-background-color: #{$md6-black-30};
-    --input-text-color: #{$md6-cream};
-    --input-placeholder-color: #{$md6-cream-30};
-    --input-focus-outline-color: #{$md6-cream-30};
+    --input-background-color: #{$tif-black-30};
+    --input-text-color: #{$tif-cream};
+    --input-placeholder-color: #{$tif-cream-30};
+    --input-focus-outline-color: #{$tif-cream-30};
 
     option {
-      background-color: $md6-black;
+      background-color: $tif-black;
     }
   }
 
 
   nav.sheet-tabs.tabs {
-    @extend %md6-frame; @extend .light;
+    @extend %tif-frame; @extend .light;
   }
 
   .scrollable {
     padding-right: 16px;
     scrollbar-width: thin;
-    scrollbar-color: $md6-cream transparent;
+    scrollbar-color: $tif-cream transparent;
   }
 
   nav.tabs {
     border-top: 0;
-    border-bottom-color: $md6-cream;
+    border-bottom-color: $tif-cream;
     margin: 10px 0;
-    color: $md6-cream;
+    color: $tif-cream;
 
     text-transform: uppercase;
     justify-content: center;
@@ -104,14 +104,14 @@ body.theme-dark .application {
     }
 
     [data-tab] {
-      color: $md6-cream;
+      color: $tif-cream;
       padding-left: 10px;
       padding-right: 10px;
       line-height: 1.5;
       border: 3px solid transparent;
 
       &.active {
-        color: $md6-cream-30;
+        color: $tif-cream-30;
         // border-image-slice: 20% 3% 5% 3% fill;
         // border-image-width: 5px 5px 1px;
         // border-image-outset: 0px 0px 0px 0px;
@@ -132,7 +132,7 @@ body.theme-dark .application {
   a.button,
   button {
     outline: none !important;
-    background: #{$md6-black-30};
+    background: #{$tif-black-30};
     border: none;
   }
 
@@ -142,13 +142,13 @@ body.theme-dark .application {
   }
   a.button:hover,
   button:hover {
-    background: #{$md6-cream};
-    color: #{$md6-black};
+    background: #{$tif-cream};
+    color: #{$tif-black};
     border: none;
   }
   a.button:focus,
   button:focus {
     outline: none;
-    box-shadow: 0 0 4px #{$md6-cream};
+    box-shadow: 0 0 4px #{$tif-cream};
   }
 }
