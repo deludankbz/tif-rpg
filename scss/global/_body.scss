@@ -8,12 +8,12 @@ body {
 
 #context-menu {
   // @extend %blur-bg;
-  --background-color: #{$md6-black};
-  --border-color: #{$md6-cream-30};
-  --text-color: #{$md6-cream} !important;
+  --background-color: #{$tif-black};
+  --border-color: #{$tif-cream-30};
+  --text-color: #{$tif-cream} !important;
   --hover-text-color: var(--text-color);
   --hover-entry-border: transparent;
-  --hover-entry-background: #{$md6-cream-10};
+  --hover-entry-background: #{$tif-cream-10};
 }
 
 #sidebar-content .sidebar-tab:not(#chat) {

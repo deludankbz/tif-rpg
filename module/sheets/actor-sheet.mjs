@@ -5,13 +5,13 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
 * Extend the basic ActorSheet with some very simple modifications
 * @extends {ActorSheetV2}
 */
-export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
+export class TIFActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
   
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ['md6', 'actor'],
+    classes: ['tif', 'actor'],
     position: {
       width: 600,
       height: 900,
@@ -37,22 +37,22 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: 'systems/miniD6/templates/actor/parts/explorer/header.hbs',
+      template: 'systems/tif-rpg/templates/actor/parts/explorer/header.hbs',
     },
     tabs: {
       // Foundry-provided generic template
       template: 'templates/generic/tab-navigation.hbs',
     },
     effects: {
-      template: 'systems/miniD6/templates/actor/parts/explorer/effects.hbs',
+      template: 'systems/tif-rpg/templates/actor/parts/explorer/effects.hbs',
       scrollable: [""],
     },
     biography: {
-      template: 'systems/miniD6/templates/actor/parts/explorer/biography.hbs',
+      template: 'systems/tif-rpg/templates/actor/parts/explorer/biography.hbs',
       scrollable: [""],
     },
     inventory: {
-      template: 'systems/miniD6/templates/actor/parts/explorer/inventory.hbs',
+      template: 'systems/tif-rpg/templates/actor/parts/explorer/inventory.hbs',
       scrollable: [""],
     },
   };
@@ -97,8 +97,8 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
       // Add the actor's data to context.data for easier access, as well as flags.
       system: this.actor.system,
       flags: this.actor.flags,
-      // Adding a pointer to CONFIG.MINID6
-      config: CONFIG.MINID6,
+      // Adding a pointer to CONFIG.TIF
+      config: CONFIG.TIF,
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
@@ -144,9 +144,9 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
         id: '',
         // FontAwesome Icon, if you so choose
         icon: '',
-        tooltip: 'MINID6.Actor.Tabs.Tooltips.',
+        tooltip: 'TIF.Actor.Tabs.Tooltips.',
         // Run through localization
-        label: 'MINID6.Actor.Tabs.',
+        label: 'TIF.Actor.Tabs.',
       };
       switch (partId) {
         case 'header':
@@ -359,7 +359,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle changing a Document's image.
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @returns {Promise}
@@ -388,7 +388,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle item select in inventory grid.
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected
@@ -421,7 +421,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
         : { selection: 'inactive' };
       
       const html = await renderTemplate(
-        'systems/miniD6/templates/actor/parts/explorer/partials/inv-item-properties.hbs',
+        'systems/tif-rpg/templates/actor/parts/explorer/partials/inv-item-properties.hbs',
         templateData
       );
 
@@ -454,7 +454,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Renders an embedded document's sheet
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected
@@ -467,7 +467,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handles item deletion
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected
@@ -480,7 +480,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @private
@@ -513,7 +513,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Determines effect parent to pass to helper
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @private
@@ -526,7 +526,7 @@ export class MiniD6ActorSheet extends api.HandlebarsApplicationMixin(
   /**
   * Handle clickable rolls.
   *
-  * @this MiniD6ActorSheet
+  * @this TIFActorSheet
   * @param {PointerEvent} event   The originating click event
   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
   * @protected

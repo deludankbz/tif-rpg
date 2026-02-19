@@ -6,13 +6,13 @@
 /* ################# */
 
 
-.sheet.md6.explorer {
+.sheet.tif.explorer {
   
   header.content-header {
-    @extend %md6-frame; @extend .light; @extend .nbrd;
+    @extend %tif-frame; @extend .light; @extend .nbrd;
     
-    padding: var(--md6-effect-item-gap);
-    gap: var(--md6-effect-item-gap);
+    padding: var(--tif-effect-item-gap);
+    gap: var(--tif-effect-item-gap);
     align-items: start;
     
     .profile-img {
@@ -26,7 +26,7 @@
   /* ----------------- */
   
   nav.sheet-tabs.tabs {
-    @extend %md6-frame;
+    @extend %tif-frame;
     @extend .dark;
     
     margin: 0;
@@ -79,17 +79,17 @@
         
         .item {
           width: 0.5fr;
-          padding: var(--md6-item-frame-padding);
-          background: var(--md6-item-frame);
+          padding: var(--tif-item-frame-padding);
+          background: var(--tif-item-frame);
           background-size: 100%;
           
           &.selected {
-            background: var(--md6-item-frame-selected);
+            background: var(--tif-item-frame-selected);
             background-size: 100%;
           }
 
           &.equipped {
-            background: var(--md6-item-frame-equipped);
+            background: var(--tif-item-frame-equipped);
             background-size: 100%;
           }
         }
@@ -127,17 +127,17 @@
   /* Inventory properties   */
   /* ---------------------- */
   section.tab.effects {
-    padding: var(--md6-effect-item-gap);
+    padding: var(--tif-effect-item-gap);
 
     .item {
-      @extend %md6-frame; @extend .light; @extend .nbrd;
+      @extend %tif-frame; @extend .light; @extend .nbrd;
 
-      padding: calc(var(--md6-effect-item-gap) / 2);
-      gap: var(--md6-effect-item-gap);
+      padding: calc(var(--tif-effect-item-gap) / 2);
+      gap: var(--tif-effect-item-gap);
       align-items: start;
 
       &:hover {
-        box-shadow: 0px 0px 15px 5px $md6-cream-30;
+        box-shadow: 0px 0px 15px 5px $tif-cream-30;
       }
 
       img {

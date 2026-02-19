@@ -1,7 +1,7 @@
 {
-  "id": "miniD6",
-  "title": "MiniD6",
-  "description": "The MiniD6 system for FoundryVTT!",
+  "id": "tif-rpg",
+  "title": "This Is Fine!",
+  "description": "The TIF Roleplaying Game system for FoundryVTT!",
   "authors": [
     {
       "name": "L. Pessoa",
@@ -36,16 +36,16 @@
       ]
     }
   },
-  "url": "https://github.com/deludankbz/miniD6",
+  "url": "https://github.com/deludankbz/tif-rpg",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "https://github.com/deludankbz/miniD6/issues",
+  "bugs": "https://github.com/deludankbz/tif-rpg/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
       "type": "setup",
-      "url": "systems/miniD6/assets/minid6-splash.png",
-      "thumbnail": "systems/miniD6/assets/minid6-splash.png"
+      "url": "systems/tif-rpg/assets/tif-splash.png",
+      "thumbnail": "systems/tif-rpg/assets/tif-splash.png"
     }
   ],
   "version": "1.0.2",
@@ -53,8 +53,8 @@
     "minimum": 13,
     "verified": "13.351"
   },
-  "esmodules": ["module/miniD6.mjs"],
-  "styles": ["css/miniD6.css"],
+  "esmodules": ["module/tif-rpg.mjs"],
+  "styles": ["css/tif-rpg.css"],
   "languages": [
     {
       "lang": "en",
@@ -67,7 +67,7 @@
   "socket": false,
   "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
   "download": "This must link to a .zip file of the current version",
-  "background": "systems/miniD6/assets/minid6-splash.png",
+  "background": "systems/tif-rpg/assets/tif-splash.png",
   "primaryTokenAttribute": "vigor",
   "secondaryTokenAttribute": "power"
 }

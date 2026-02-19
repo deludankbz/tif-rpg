@@ -1,4 +1,4 @@
-export default class MiniD6ItemBase extends foundry.abstract
+export default class TIFItemBase extends foundry.abstract
   .TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;

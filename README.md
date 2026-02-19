@@ -1,5 +1,5 @@
-# miniD6
-The miniD6 Game system for FoundryVTT
+# This Is Fine!
+The TIF Roleplaying Game system for FoundryVTT
 
 > **Disclaimers**
 > 
