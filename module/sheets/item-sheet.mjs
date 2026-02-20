@@ -212,7 +212,7 @@ export class TIFItemSheet extends api.HandlebarsApplicationMixin(
     const frame = await super._renderFrame(options);
 
     if (!this.document.inCompendium && this.document.isOwner) {
-      const toggleLabel = game.i18n.localize(`CUSTOMFIELDS.toggleSheetMode.${this.item.system.playMode}`);
+      const toggleLabel = game.i18n.localize(`TIF.SheetLabels.toggleSheetMode.${this.item.system.playMode}`);
       const cssClass = this.item.system.playMode ? "wand-magic-sparkles" : "lock";
       const togglePlayEditId = `
         <button type="button toggle-sheet-mode" class="header-control fa-solid fa-${cssClass} icon" data-action="toggleSheetMode" data-tooltip="${toggleLabel}"></button>

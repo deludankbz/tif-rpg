@@ -10,7 +10,11 @@
     },
     "SheetLabels": {
       "Actor": "TIF Actor Sheet",
-      "Item": "TIF Item Sheet"
+      "Item": "TIF Item Sheet",
+      "toggleSheetMode": {
+        "true": "Current sheet is editable",
+        "false": "Current sheet is locked"
+      }
     },
     "Actor": {
       "Tabs": {
@@ -63,22 +67,21 @@
         "Description": "Description",
         "Effects": "Effects"
       },
-      "Gear": {
-        "FIELDS": {
-          "rollFormula": {"label": "Roll Formula"},
-          "numDice": {"label": "Number of Dice"},
-          "dieSize": {"label": "Die Size"},
-          "rollMod": {"label": "Roll Modifier"},
-          "quantity": {"label": "Quantity"},
-          "weight": {"label": "Weight"}
-        }
+      "base": {
       },
-      "Spell": {
+      "Feature": {
         "FIELDS": {
           "level": {"label": "Spell Level"}
-        },
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
+        }
+      },
+      "Weapon": {
+        "FIELDS": {
+          "subtype": {
+            "close": { "label": "Close Range" },
+            "ranged": { "label": "Ranged Weapon" }
+          },
+          "level": {"label": "Spell Level"}
+        }
       }
     },
     "Effect": {
@@ -89,7 +92,7 @@
       "Inactive": "Inactive Effects"
     }
   },
-
+  
   "TYPES": {
     "Actor": {
       "explorer": "Explorer",
@@ -99,14 +102,8 @@
     "Item": {
       "equipment": "Equipment",
       "weapon": "Weapon",
-      "effect": "Effect"
-    }
-  },
-
-  "CUSTOMFIELDS": {
-    "toggleSheetMode": {
-      "true": "Current sheet is editable",
-      "false": "Current sheet is locked"
+      "skill": "Skill",
+      "feature": "Feature"
     }
   }
 }

@@ -283,7 +283,7 @@ export class TIFActorSheet extends api.HandlebarsApplicationMixin(
   * Toggle sheet mode from editable to locked
   */
   static async _toggleSheetMode(event, target) {
-    const toggleLabel = game.i18n.localize(`CUSTOMFIELDS.toggleSheetMode.${!this.actor.system.playMode}`);
+    const toggleLabel = game.i18n.localize(`TIF.SheetLabels.toggleSheetMode.${!this.actor.system.playMode}`);
     $(target).toggleClass("fa-wand-magic-sparkles").toggleClass("fa-lock").attr("data-tooltip", toggleLabel);
     await this.actor.update({ "system.playMode": !this.actor.system.playMode });
   }
