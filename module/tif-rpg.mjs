@@ -58,8 +58,9 @@ Hooks.once('init', function () {
   };
   CONFIG.Item.documentClass = TIFItem;
   CONFIG.Item.dataModels = {
-    effect: models.TIFEffect,
-    equipment: models.TIFGear,
+    feature: models.TIFFeature,
+    skill: models.TIFSkill,
+    equipment: models.TIFEquipment,
     weapon: models.TIFItemBase,
   };
 
@@ -78,7 +79,7 @@ Hooks.once('init', function () {
 
   collections.Items.unregisterSheet('core', foundrySheets.ItemSheet);
   collections.Items.registerSheet('tif-rpg', sheets.TIFItemSheet, {
-    types: ['equipment', 'effect', 'weapon'],
+    types: ['equipment', 'feature', 'weapon', 'skill'],
     makeDefault: true,
     label: 'TIF.SheetLabels.Item',
   });

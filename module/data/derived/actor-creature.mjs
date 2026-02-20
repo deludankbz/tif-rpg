@@ -1,9 +1,9 @@
-import TIFActorBase from './base-actor.mjs';
+import TIFActorBase from '../base-actor.mjs';
 
-export default class TIFNPC extends TIFActorBase {
+export default class TIFCreature extends TIFActorBase {
   static LOCALIZATION_PREFIXES = [
     ...super.LOCALIZATION_PREFIXES,
-    'TIF.Actor.NPC',
+    'TIF.Actor.CREATURE',
   ];
 
   static defineSchema() {

@@ -1,6 +1,6 @@
 export default class TIFActorBase extends foundry.abstract
   .TypeDataModel {
-  static LOCALIZATION_PREFIXES = ["TIF.Actor.base"];
+  // static LOCALIZATION_PREFIXES = ["TIF.Actor.base"];
 
   static defineSchema() {
     const fields = foundry.data.fields;

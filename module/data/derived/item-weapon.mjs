@@ -1,6 +1,6 @@
-import TIFItemBase from './base-item.mjs';
+import TIFItemBase from '../base-item.mjs';
 
-export default class TIFGear extends TIFItemBase {
+export default class TIFWeapon extends TIFItemBase {
   static LOCALIZATION_PREFIXES = [
     'TIF.Item.base',
     'TIF.Item.Gear',
@@ -24,6 +24,7 @@ export default class TIFGear extends TIFItemBase {
     });
 
     // Break down roll formula into three independent fields
+    /*
     schema.roll = new fields.SchemaField({
       diceNum: new fields.NumberField({
         ...requiredInteger,
@@ -37,14 +38,15 @@ export default class TIFGear extends TIFItemBase {
     });
 
     schema.formula = new fields.StringField({ blank: true });
-
+    */
     return schema;
   }
 
   prepareDerivedData() {
     // Build the formula dynamically using string interpolation
+    /*
     const roll = this.roll;
-
     this.formula = `${roll.diceNum}${roll.diceSize}${roll.diceBonus}`;
+    */
   }
 }

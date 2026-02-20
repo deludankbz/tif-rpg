@@ -12,7 +12,8 @@
   "documentTypes": {
     "Item": {
       "equipment": {},
-      "effect": {},
+      "skill": {},
+      "feature": {},
       "weapon": {}
     },
     "Actor": {
